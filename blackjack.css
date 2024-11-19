@@ -1,0 +1,155 @@
+
+body {
+    background: #437A5B;  
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+}
+
+body .card{
+    border: 1px solid yellow;
+    height: 220px; 
+    margin-top: 10px;   
+}
+
+body .card img {
+    height: 100%;
+}
+
+body .top {
+    background: #3F3F3F;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    margin-bottom: 100px;
+}
+
+body .top .logo {    
+    width: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+body .top .logo .title {
+    font-size: 2.1rem;
+    color: #fff;
+}
+
+body .game-board {
+    width: 60%;
+    border: 1px solid red;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+body .game-board .game-player {
+    font-size: 2.1rem;
+    color: #fff;
+}
+
+body .game-board .row1{
+    width: 100%;
+    border: 1px solid violet;
+    display: flex;     
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+body .game-board .row1 .row1-left {
+    border: 1px solid #000;    
+    
+}
+body .game-board .row1 .row1-left .row1-card-box .hidden-card{
+    border: 1px solid blue;
+    position: absolute;
+    left: -250px; 
+    top: 150px;
+}
+
+
+body .game-board .row1 .row1-right {
+    width: 40%;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    font-size: 2.1rem;
+    color: #fff; 
+    padding: 10px;
+}
+body .game-board .row1 .row1-right .betting-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+body .game-board .row1 .row1-right .betting-box .betting-chip-img  {
+    width: 100px;
+}
+body .game-board .row1 .row1-right .betting-box .betting-chip-img img {
+    width: 100%;
+}
+
+body .game-board .row1 .row1-right .gamechip-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+body .game-board .row1 .row1-right .gamechip-box .gamechip-img {
+    width: 100px;
+}
+body .game-board .row1 .row1-right .gamechip-box .gamechip-img img {
+    width: 100%;
+}
+
+
+
+
+
+body .game-board .row2{
+    width: 100%;
+    border: 1px solid blue;
+    display: flex;     
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+body .game-board .row2 .row2-right {    
+    width: 40%;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    font-size: 2.1rem;
+    color: #fff;         
+}
+
+body .game-board .row2 .row2-right .button-box {    
+    display: flex;    
+    justify-content: center;
+    align-items: center; 
+    flex-wrap: wrap;
+}
+
+body .game-board .row2 .row2-right .button-box .playbtn {
+    
+    width: 48%;
+    border: 1px solid #000;    
+    margin: 4px;     
+}
+body .game-board .row2 .row2-right .button-box .playbtn p {
+    text-align: center;
+    padding: 10px;
+}

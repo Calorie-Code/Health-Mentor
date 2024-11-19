@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="blackjack.css">
+    <script src="blackjack.js" defer></script>
+  </head>
+  <body>
+
+
+    <header class="top">
+      <div class="logo">
+        <h1 class="title">Blackjack</h1>
+        <div class="logo-img"><img src="#" alt="">x</div>
+      </div>
+      <div class="exit-button">X</div>
+    </header>
+
+
+    <section class="game-board">
+      
+      <div class="row1"> 
+        <div class="row1-left">
+          <span class="game-player">Dealer</span>
+          <div class="row1-card-box">
+            <div class="hidden-card card">
+              <img src="img/card_back.png" alt="">
+            </div>
+            <div class="dealer-card card">
+              <img src="img/Clubs-7.png" alt="">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row1-right">
+
+          <div class="betting-box">
+            <div class="betting-chip-img">
+              <img src="img/blank-chip.png" alt="">
+            </div>
+            <p class="betting-chip">100</p>
+          </div>
+
+          <div class="gamechip-box">
+            <div class="gamechip-img">
+              <img src="img/pile-chip.png" alt="">
+            </div>
+            <p class="mygamechip">100</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row2">
+        <div class="row2-left">
+          <span class="game-player">Player</span>
+          <div>
+            <div class="player-card card">
+              <img src="img/Clubs-7.png" alt="">
+            </div>
+          </div>
+        </div>
+
+        <div class="row2-right">
+          <div class="button-box">
+            <div class="hit-button playbtn"><p>Hit</p></div>
+            <div class="double-button playbtn"><p>Double</p></div>
+            <div class="stand-button playbtn"><p>Stand</p></div>
+            <div class="split-button playbtn"><p>Split</p></div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </body>
+</html>
