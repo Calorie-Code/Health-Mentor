@@ -324,11 +324,13 @@ let cards=[
 // console.log(randomCardShape);
 // console.log(cards[0].suit);
 let newRandomCard
-let newArr = [];
+let newCardArr = []; //게임 진행 중에 뽑힌 카드가 쌓인 배열
+let alReadyCard = 0; 
 
 const $dealerCard = document.querySelector('.dealer-card');
 
 console.log($dealerCard);
+
 
 //랜덤카드 만들기
 function RandomCard(){
@@ -347,15 +349,35 @@ function RandomCard(){
 	//  newCardList.filter(card => card.value === randomCardNum);	 
 }
 
-//게임초기세팅
-function startTabel() {
-	// while(newArr.length <= 3){
-	// 	RandomCard();
-	// 	if(newArr)
-	// 	newArr.push(newRandomCard);
-	// }
+
+//카드 비교 함수
+function compareCard() {
+
+if (!newCardArr.includes(newRandomCard)){ //배열에 새로운 랜덤카드랑 같은카드가 없을때 푸시
+	console.log(newRandomCard);
+	newCardArr.push(newRandomCard);
+}else{
+	console.log('이미 카드가 있습니다.'); //랜덤카드가 이미 뽑았던 카드라면 alReadyCard의 값을 99로 리턴한다
+	alReadyCard = 99;
+	return alReadyCard;
+}
 }
 
-// for(){ 랜덤카드를 일단 만든다. 그걸 특정 메모리에 넣어 2번째를 만들어 이제부터 비교가 들어간다. 같으면 continue }
-// startTabel();
-// console.log(newArr);
+
+
+//게임초기세팅
+function startTabel() {
+	for (i=0;i<=3;i++){
+		RandomCard(); 
+		compareCard();
+		//카드를 비교했을때 기존에 뽑은 카드가 뽑혔다면 다시 뽑고 alReadyCard의 값을 0으로 되돌린다.
+		if(alReadyCard === 99){ 
+			i--;
+			alReadyCard = 0;
+		}
+	}
+	//newCardArr는 반복 실행을 통해 4장의 카드를 뽑고 종료된다
+	console.log(newCardArr);	
+}
+
+startTabel();
