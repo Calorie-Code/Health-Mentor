@@ -1,7 +1,8 @@
 @import url(./reset.css);
 
-/* roboto 글씨체(제목용) */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+  font-family: "Work Sans", serif;
+}
 
 body {
   /* 바디 백그라운드 이미지 설정 */
@@ -56,6 +57,13 @@ div#menu-container {
   /* ! Menu-box 안쪽에 하얀 실선 두는 용(바로 아래 코드용) */
   position:relative; 
 }
+@media (max-width: 1560px) {
+  #menu-container .menu-box .menu-icon {
+    width: 200px;
+    height: 200px;
+    border-radius: 50px;
+  }
+}
 
 /* 메뉴 아이콘 박스 시 둥둥 떠보이는 애니메이션 */
 #menu-container .menu-box .menu-icon:hover {
@@ -75,13 +83,19 @@ div#menu-container {
   border: 6px solid #ffffff;
   border-radius: 100px;
 }
+@media (max-width: 1560px) {
+  #menu-container .menu-box .menu-icon::before {
+    border-radius: 40px;
+    border: 4px solid #ffffff;
+  }
+}
 
 /* 메뉴 아이콘 박스 메뉴 별 색상 지정 */
 #menu-container .menu-box#fitness-guide .menu-icon {
   background: #3F3F3F;
 } 
 
-#menu-container .menu-box#wellness-store .menu-icon {
+#menu-container .menu-box#food-nutrition .menu-icon {
   background: #437A5B;
 } 
 
@@ -95,9 +109,9 @@ div#menu-container {
   cursor: url('/Image/index/fitness-guide-cursor.png') 16 16, auto;
 } 
 
-#menu-container .menu-box#wellness-store .menu-icon,
-#menu-container .menu-box#wellness-store .menu-description {
-  cursor: url('/Image/index/wellness-store-cursor.png') 16 16, auto;
+#menu-container .menu-box#food-nutrition .menu-icon,
+#menu-container .menu-box#food-nutrition .menu-description {
+  cursor: url('/Image/index/food-nutrition-cursor.png') 16 16, auto;
 } 
 
 #menu-container .menu-box#my-plan .menu-icon,
@@ -107,7 +121,7 @@ div#menu-container {
 
 
 #menu-container div.image-container {
-  border: 6px solid #ffffff;
+  border:6px solid #ffffff;
   margin-top:40px; /* 위치 조절용(부모 요소 space-between) */
   /* 아이콘 담는 박스 흰색 테두리용 */
   width: 65%;
@@ -118,6 +132,26 @@ div#menu-container {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media (max-width: 1560px) {
+  #menu-container div.image-container {
+    border:4px solid #ffffff;
+    margin-top:30px; /* 위치 조절용(부모 요소 space-between) */
+    margin-bottom: 20px;
+    /* 아이콘 담는 박스 흰색 테두리용 */
+    width: 65%;
+    height: 70px;
+    border-radius: 30px;
+    padding: 5px;
+  }
+}
+
+/* 이미지 크기 */
+@media (max-width: 1560px) {
+  #menu-container div.image-container img {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 /* 메뉴 컨테이너 -> Menubox -> 텍스트 박스 높이 지정
@@ -139,6 +173,12 @@ div#menu-container {
   text-align: center;
   font-size: 2.5rem;
 }
+@media (max-width: 1560px) {
+  #menu-container .menu-box .menu-icon p {
+    font-size: 1.8rem;
+    font-weight: 500;
+  } 
+}
 
 /* 메뉴 별 description 담는 박스 */
 #menu-container .menu-box .menu-description {
@@ -155,6 +195,11 @@ div#menu-container {
   text-align: center;
   line-height: 1.2;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 1560px) {
+  #menu-container .menu-box .menu-description p {
+    font-size: 1.2rem;
+  }
 }
 
 /* 메뉴 별 description 텍스트 hover시 떠보이는 애니메이션 */
@@ -206,4 +251,11 @@ div#menu-container {
   font-size: 2rem;
   font-weight: 500;
 }
+@media (max-width: 1560px) {
+  .wrap .minigame-container .minigame-box p {
+    font-size: 1.4rem;
+  }
+}
+
+
 /* ==========end: 미니게임 ============ */
