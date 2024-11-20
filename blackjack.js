@@ -328,6 +328,7 @@ let newCardArr = []; //게임 진행 중에 뽑힌 카드가 쌓인 배열
 let alReadyCard = 0; 
 
 const $dealerCard = document.querySelector('.dealer-card');
+const $playerCard = document.querySelector('.player-card');
 
 console.log($dealerCard);
 
@@ -374,7 +375,22 @@ function startTabel() {
 		if(alReadyCard === 99){ 
 			i--;
 			alReadyCard = 0;
+			continue;
 		}
+
+		//딜러랑 플레이어에게 한장씩 차례로 카드뿌리기
+		if(i % 2 ===0){
+			console.log('딜러에게 카드를 부여합니다.')
+			const $img = document.createElement('img');
+			$img.src = `img/${newRandomCard.src}`
+			$dealerCard.appendChild($img);
+		}else{
+			console.log('플레이어에게 카드를 부여합니다.');		
+			const $img = document.createElement('img');
+			$img.src = `img/${newRandomCard.src}`
+			$playerCard.appendChild($img);	
+		}
+		
 	}
 	//newCardArr는 반복 실행을 통해 4장의 카드를 뽑고 종료된다
 	console.log(newCardArr);	
