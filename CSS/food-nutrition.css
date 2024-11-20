@@ -10,142 +10,160 @@ body {
   width: 100vw;
   position: relative;
   background: #e0e0e0;
+  display: flex;
+  flex-direction: column;
 }
 
-  
-  /* 메뉴 박스 */
-  .main-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45%;
-    height: 60%;
-    background: #ffffff;
-    border-radius: 40px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(67, 122, 91, 0);
-    padding: 25px;
-  }
-  
-  /* 메뉴 박스 -> 이미지 박스 */
-  .main-container .image-box {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 40px;
-    display: flex;
-    position: relative; /* 텍스트 상자 위치 조절용 */
-  }
-  
-  /* 메뉴 박스 -> 이미지 박스 -> 배경 이미지 */
-  .main-container .image-box img.background-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 40px;
-    position: relative;
-    opacity: 0.8;
-  }
+/* '메인으로 돌아가기' 버튼 스타일 */
+.back-to-main {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #52916e;
+  position: absolute;
+  top: 20px; /* 메뉴 박스 위쪽에서 20px 만큼 떨어지게 위치 */
+  left: 0; /* 메뉴 박스의 왼쪽 끝에 배치 */
+  padding-left: 20px; /* 왼쪽에 여백을 추가 */
+}
 
-  
-  /* 메뉴 박스 -> 텍스트 상자 */
-  .main-container .image-box .text-box {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    width: 80%;
-    height: 140px;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 20px;
-    padding: 10px;
-    padding-left: 20px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  /* 건강한 삶을 위한 첫걸음 */
-  .main-container .image-box .text-box h1 {
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #6161ba;
-    line-height: 1.5;
-  }
+.back-to-main:hover {
+  color: #437A5B;
+}
 
-  /* 영양 정보를 검색하세요! */
-  .main-container .image-box .text-box h2 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #333333;
-    letter-spacing: 0.9px;
-    margin-bottom: 10px;
-  
-  }
+/* 메뉴 박스 */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  height: 60%;
+  background: #ffffff;
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(67, 122, 91, 0);
+  padding: 25px;
+  position: relative; /* 부모 요소가 상대적으로 위치할 수 있게 설정 */
+  top: 20px; /* 위로 20px 이동 */
+}
 
-  .main-container .image-box .text-box .search-bar{
-    display: flex;
-    align-items: center;
-  }
-  .main-container .image-box .text-box .search-bar input,
-  .main-container .image-box .text-box .search-bar button {
-    height: 40px;
-    padding: 10px;
-  }
+/* 메뉴 박스 -> 이미지 박스 */
+.main-container .image-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  display: flex;
+  position: relative; /* 텍스트 상자 위치 조절용 */
+}
 
-  .main-container .image-box .text-box .search-bar input {
-    width: 80%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .main-container .image-box .text-box .search-bar button {
-    width: 10%;
-    margin-left: 10px;
-    border: none;
-    background-color:  #6a6ad5;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: 5px;
-    cursor: url('../img/nutrition-fact/search_cursor.png') 16 16, auto;
-  }
-  
-  .main-container .image-box .text-box .search-bar button:hover {
-    background-color: #6161ba;
-  }
-  
-  .result {
-    /* margin-top: 20px; */
-  }
-  
-  .product-card {
-    margin: 20px 0;
-    text-align: center;
-  }
-  
-  .product-card img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-  
-  .product-card h2 {
-    font-size: 18px;
-    margin-top: 10px;
-  }
-  
-  .product-card ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 10px;
-  }
-  
-  .product-card ul li {
-    margin: 5px 0;
-  }
-  
+/* 메뉴 박스 -> 이미지 박스 -> 배경 이미지 */
+.main-container .image-box img.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 5%;
+  border-radius: 40px;
+  position: relative;
+  opacity: 0.8;
+}
 
+/* 메뉴 박스 -> 텍스트 상자 */
+.main-container .image-box .text-box {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  width: 80%;
+  height: 140px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  padding-left: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 건강한 삶을 위한 첫걸음 */
+.main-container .image-box .text-box h1 {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #569d75;
+  line-height: 1.5;
+}
+
+/* 영양 정보를 검색하세요! */
+.main-container .image-box .text-box h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333333;
+  letter-spacing: 0.9px;
+  margin-bottom: 10px;
+}
+
+/* 검색 입력란 */
+.main-container .image-box .text-box .search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.main-container .image-box .text-box .search-bar input,
+.main-container .image-box .text-box .search-bar button {
+  height: 40px;
+  padding: 10px;
+}
+
+.main-container .image-box .text-box .search-bar input {
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.main-container .image-box .text-box .search-bar button {
+  width: 10%;
+  margin-left: 10px;
+  border: none;
+  background-color: #52916e;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: url('../img/nutrition-fact/search_cursor.png') 16 16, auto;
+}
+
+.main-container .image-box .text-box .search-bar button:hover {
+  background-color: #437A5B;
+}
+
+/* 검색 결과 */
+.result {
+  /* margin-top: 20px; */
+}
+
+.product-card {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.product-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.product-card ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.product-card ul li {
+  margin: 5px 0;
+}
