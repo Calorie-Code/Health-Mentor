@@ -6,7 +6,7 @@ body {
 
 body {
   /* 바디 백그라운드 이미지 설정 */
-  background-image: url('/Image/index/background.png');
+  background-image: url('/image/index/background.png');
   height: 100vh; /* ! 이걸 설정하지 않으면, wrap이 세로 중앙에 배치가 안 됨 */
   display: flex;
   flex-direction: column;
@@ -106,17 +106,17 @@ div#menu-container {
 /* 메뉴 아이콘 박스 및 메뉴 description 커서 설정 */
 #menu-container .menu-box#fitness-guide .menu-icon,
 #menu-container .menu-box#fitness-guide .menu-description {
-  cursor: url('/Image/index/fitness-guide-cursor.png') 16 16, auto;
+  cursor: url('/image/index/fitness-guide-cursor.png') 16 16, auto;
 } 
 
 #menu-container .menu-box#food-nutrition .menu-icon,
 #menu-container .menu-box#food-nutrition .menu-description {
-  cursor: url('/Image/index/food-nutrition-cursor.png') 16 16, auto;
+  cursor: url('/image/index/food-nutrition-cursor.png') 16 16, auto;
 } 
 
 #menu-container .menu-box#my-plan .menu-icon,
 #menu-container .menu-box#my-plan .menu-description {
-  cursor: url('/Image/index/my-plan-cursor.png') 16 16, auto;
+  cursor: url('/image/index/my-plan-cursor.png') 16 16, auto;
 } 
 
 
@@ -224,7 +224,7 @@ div#menu-container {
   border-radius: 23px;
   border: 4px solid #ffffff;
   position: relative;
-  cursor: url('/Image/index/minigame-cursor.png') 16 16, auto;
+  cursor: url('/image/index/minigame-cursor.png') 16 16, auto;
 }
 @media (max-width: 1560px) {
   .wrap .minigame-container .minigame-box {
