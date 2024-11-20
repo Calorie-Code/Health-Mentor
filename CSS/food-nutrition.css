@@ -2,25 +2,16 @@
 @import url(./reset.css);
 
 body {
-    font-family: "Work Sans", serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-  }
-  
-  /* 배경 투명도 지정용 */
-  body::before {
-    content: '';
-    height: 100%;
-    width: 100%;
-    background: #437A5B;
-    opacity: 0.2;
-    position: absolute;
-    z-index: -1;
-  }
+  font-family: "Noto Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background: #e0e0e0;
+}
+
   
   /* 메뉴 박스 */
   .main-container {
@@ -31,97 +22,130 @@ body {
     height: 60%;
     background: #ffffff;
     border-radius: 40px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(67, 122, 91, 0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(67, 122, 91, 0);
     padding: 25px;
-}
-
-/* 메뉴 박스 -> 이미지 박스 */
-.image-box {
+  }
+  
+  /* 메뉴 박스 -> 이미지 박스 */
+  .main-container .image-box {
     position: relative;
     width: 100%;
     height: 100%;
     border-radius: 40px;
-    background: yellow;
-}
-
-.product-image {
+    display: flex;
+    position: relative; /* 텍스트 상자 위치 조절용 */
+  }
+  
+  /* 메뉴 박스 -> 이미지 박스 -> 배경 이미지 */
+  .main-container .image-box img.background-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 40px;
-}
+    position: relative;
+    opacity: 0.8;
+  }
 
-.text-box {
+  
+  /* 메뉴 박스 -> 텍스트 상자 */
+  .main-container .image-box .text-box {
     position: absolute;
-    top: 50%;
+    top: 25%;
     left: 50%;
-    transform: translate(-50%, -50%);
     width: 80%;
-    height: 50%;
+    height: 140px;
+    transform: translate(-50%, -50%);
     background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-h1, h2 {
-    margin-bottom: 10px;
-}
-
-.search-bar {
-    margin: 20px 0;
-}
-
-.search-bar input {
+    border-radius: 20px;
     padding: 10px;
+    padding-left: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* 건강한 삶을 위한 첫걸음 */
+  .main-container .image-box .text-box h1 {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6161ba;
+    line-height: 1.5;
+  }
+
+  /* 영양 정보를 검색하세요! */
+  .main-container .image-box .text-box h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333333;
+    letter-spacing: 0.9px;
+    margin-bottom: 10px;
+  
+  }
+
+  .main-container .image-box .text-box .search-bar{
+    display: flex;
+    align-items: center;
+  }
+  .main-container .image-box .text-box .search-bar input,
+  .main-container .image-box .text-box .search-bar button {
+    height: 40px;
+    padding: 10px;
+  }
+
+  .main-container .image-box .text-box .search-bar input {
     width: 80%;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-.search-bar button {
-    padding: 10px 20px;
+  }
+  
+  .main-container .image-box .text-box .search-bar button {
+    width: 10%;
     margin-left: 10px;
     border: none;
-    background-color: #4CAF50;
+    background-color:  #6a6ad5;
     color: white;
-    font-size: 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
     border-radius: 5px;
-    cursor: pointer;
-}
-
-.search-bar button:hover {
-    background-color: #45a049;
-}
-
-.result {
-    margin-top: 20px;
-}
-
-.product-card {
+    cursor: url('../img/nutrition-fact/search_cursor.png') 16 16, auto;
+  }
+  
+  .main-container .image-box .text-box .search-bar button:hover {
+    background-color: #6161ba;
+  }
+  
+  .result {
+    /* margin-top: 20px; */
+  }
+  
+  .product-card {
     margin: 20px 0;
     text-align: center;
-}
-
-.product-card img {
+  }
+  
+  .product-card img {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 10px;
-}
-
-.product-card h2 {
+  }
+  
+  .product-card h2 {
     font-size: 18px;
     margin-top: 10px;
-}
-
-.product-card ul {
+  }
+  
+  .product-card ul {
     list-style-type: none;
     padding: 0;
     margin-top: 10px;
-}
-
-.product-card ul li {
+  }
+  
+  .product-card ul li {
     margin: 5px 0;
-}
+  }
+  
+
