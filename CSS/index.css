@@ -226,6 +226,13 @@ div#menu-container {
   position: relative;
   cursor: url('/Image/index/minigame-cursor.png') 16 16, auto;
 }
+@media (max-width: 1560px) {
+  .wrap .minigame-container .minigame-box {
+    width: 300px;
+    border: 3px solid #ffffff;
+    border-radius: 20px;
+  }
+}
 
 /* 미니게임 박스 hover 시 떠보이는 애니메이션 */
 .wrap .minigame-container .minigame-box:hover {
@@ -243,6 +250,12 @@ div#menu-container {
   bottom: 4px;
   border: 4px solid #ffffff;
   border-radius: 20px;
+}
+@media (max-width: 1560px) {
+  .wrap .minigame-container .minigame-box::before {
+    border: 3px solid #ffffff;
+    border-radius: 15px;
+  }
 }
 
 .wrap .minigame-container .minigame-box p {
