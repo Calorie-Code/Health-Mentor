@@ -195,7 +195,6 @@ body.search-mode {
   font-size: 0.9rem;
   font-weight: 500;
   line-height: 1.5;
-  color: #333333;
   transition: color 0.3s ease;
 }
 
@@ -203,4 +202,78 @@ body.search-mode {
   color: #1a1a1a;
   font-weight: 600;
   cursor: pointer;
+}
+
+
+/* ===================== 모달 ================  */
+/* 모달 오버레이 (배경) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); 
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+  z-index: 1000; 
+  display: none;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+/* 모달 컨테이너 */
+.modal-container {
+  background-color: #ffffff;
+  width: 45%; /* 원하는 크기로 설정 */
+  height: 60%; /* 원하는 크기로 설정 */
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 수평과 수직 모두 중앙으로 이동 */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1001; /* 모달 컨텐츠가 오버레이 위로 표시되도록 설정 */
+}
+
+/* 모달 헤더 */
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* 닫기 버튼 */
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2f5740 ;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #437A5B; 
+}
+
+/* 모달 바디 */
+.modal-body {
+  font-size: 1rem;
+  height: 90%;
+  background: red;
+  color: #333;
+  overflow-y: auto;
+}
+
+/* 모달 열기 시 화면 전체를 덮는 효과 (모달이 열렸을 때 적용) */
+.modal-overlay.show {
+  display: flex; /* 모달을 보이게 하기 위해 flex로 설정 */
 }
