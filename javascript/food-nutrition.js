@@ -671,10 +671,14 @@
       // 내용 초기화 하고
       $resultDiv.innerHTML = '';
 
+      $resultDiv.style.display = "block";  // 즐겨찾기 목록을 보여주기 위해 display 설정(기본 세팅이 none임)
+      $mainContainerTextBox.classList.add('search-mode') // !!! 서치 모드 처럼 텍스트 바 높이 늘려주기
+
       // 즐겨찾기한 제품이 없으면,
       if (favoriteItemsStorage.length === 0) {
         //  즐겨찾기 없다고 문구 표시
         const $noFavoriteDiv = document.createElement('div');
+        $resultDiv.style.display = "block";  // 즐겨찾기 목록을 보여주기 위해 display 설정(기본 세팅이 none임)
         $noFavoriteDiv.innerHTML = `
           <div class="product-card">
             <p class="no-favorite-item">  즐겨찾기가 없어요ㅠㅠ!!!!</p>
@@ -685,8 +689,6 @@
       }
 
     
-      $resultDiv.style.display = "block";  // 즐겨찾기 목록을 보여주기 위해 display 설정(기본 세팅이 none임)
-      $mainContainerTextBox.classList.add('search-mode') // !!! 서치 모드 처럼 텍스트 바 높이 늘려주기
 
       // storage에 저장된 즐겨찾기 목록 가져와서, 화면에 표시
       console.log(favoriteItemsStorage);
