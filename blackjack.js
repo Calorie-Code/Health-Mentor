@@ -438,7 +438,8 @@ function getCardOne() {
       alReadyCard = 0;
       continue;
     }
-    // console.log("hit버튼 클릭 플레이어에게 카드를 부여합니다.");
+    // console.log("hit버튼 클릭 플레이어에게 카드를 부여합니다.");    
+
     const $img = document.createElement("img");
     $img.src = `img/${newRandomCard.src}`;
     $playerCard.appendChild($img);

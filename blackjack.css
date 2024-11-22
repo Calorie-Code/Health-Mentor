@@ -67,13 +67,8 @@ body .game-board .row1 .row1-left {
     border: 1px solid #000;   
 }
 
-/* body .game-board .row1 .row1-left .row1-card-box .dealer-card .cardImgBox{
-    border: 1px solid #000;
-    width: 164px;
-}
-body .game-board .row1 .row1-left .row1-card-box .dealer-card .cardImgBox img {
-    width: 100%;
-} */
+
+
 
 body .game-board .row1 .row1-left .row1-card-box .hidden-card{
     /* border: 1px solid blue; */
