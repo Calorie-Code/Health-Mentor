@@ -33,7 +33,10 @@
             <div class="image-box">
                 <img src="../img/nutrition-fact/background4.jpg" alt="background image" class="background-image">
                 <div class="text-box">
-                    <h1>건강한 삶을 위한 첫걸음</h1>
+                    <div class="text-box-1">
+                        <button class="bookmark-check-button">즐겨찾기 목록 불러오기<i class="fa-regular fa-lightbulb"></i></button>
+                    <!-- <h1>건강한 삶을 위한 첫걸음</h1> -->
+                    </div>
                     <h2>영양 정보를 검색하세요!</h2>
                     <div class="search-bar">
                         <input type="text" id="productName" placeholder="제품명을 입력하세요" />
@@ -53,7 +56,13 @@
     <div class="modal-overlay">
         <div class="modal-container">
             <div class="modal-header">
-                <p><!-- 제품 이름 --></p>
+                <div class="modal-title">
+                    <p><!-- 제품 이름 --></p>
+                    <i class="fa-regular fa-heart unfavorite"></i>
+                    <i class="fa-solid fa-heart add-to-favorite"></i> 
+                    <span class="favorite">즐겨찾기가 등록되었습니다.</span>
+                    <span class="unfavorite">즐겨찾기가 해제 되었습니다.</span>
+                </div>
                 <i class="fa-solid fa-xmark close-btn"></i>
             </div>
 

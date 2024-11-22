@@ -104,13 +104,30 @@ body.search-mode {
   }
 }
 
-/* 건강한 삶을 위한 첫걸음 */
-.main-container .image-box .text-box h1 {
-  margin-bottom: 10px;
-  font-size: 0.9rem;
+/* 즐겨찾기 목록 감싸는 div */
+.main-container .text-box .text-box-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 즐겨찾기 목록 확인 버튼 */
+.main-container .text-box-1 .bookmark-check-button {
+  background-color: rgba(255, 255, 255, 0.3); /* 더 부드러운 투명 흰색 배경 */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 6px;
+  letter-spacing: 1.2;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #569d75;
   line-height: 1.5;
+}
+.main-container .text-box-1 .bookmark-check-button:hover {
+  color: #437A5B;
+  transform: scale(1.02); 
 }
 
 /* 영양 정보를 검색하세요! */
@@ -191,6 +208,9 @@ body.search-mode {
     height: 200px;
   }
 }
+.main-container .result.no-favorite-item{
+  display: block; 
+}
 .main-container .result.when-no-result {
   border: none;
   background: transparent;
@@ -234,6 +254,13 @@ body.search-mode {
   cursor: pointer;
 }
 
+/* 즐겨찾기 결과 없을 때 */
+.main-container .result .product-card p.no-favorite-item {
+  font-size: 0.9em;
+  font-weight: 400;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
 
 /* ===================== 모달 ================  */
 /* 모달 오버레이 (배경) */
@@ -281,10 +308,40 @@ body.search-mode {
   margin-bottom: 10px;
 }
 
+/* 제목(푸드명) */
 .modal-header p {
   font-size: 1.4rem;
   letter-spacing: 1.5px;
 }
+
+/* 즐겨찾기 + title 박스 */
+.modal-header .modal-title {
+  display: flex;
+}
+
+/* 즐겨찾기 버튼 */
+.modal-header i.add-to-favorite,
+.modal-header i.unfavorite
+{
+  color: #569d75;
+  font-size: 1.5rem;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.modal-header i.unfavorite {
+  display: none;
+}
+
+/* 즐겨찾기 문구 */
+.modal-header span.favorite,
+.modal-header span.unfavorite {
+  display: none;
+  margin-left: 10px;
+  font-size: 0.9rem;
+  color: #888888;
+}
+
 
 /* 닫기 버튼 */
 .close-btn {
