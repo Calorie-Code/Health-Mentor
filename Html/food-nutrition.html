@@ -10,70 +10,87 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- noto sans kr 글씨체 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- jua 글씨체 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jua&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="../javascript/food-nutrition.js" defer></script>
+    <!-- chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 <body>
-    <a href="/" class="back-to-main">메인으로 돌아가기</a> <!-- 추가된 a 태그 -->
+    <!-- 메인으로 돌아 가기 -->
+    <a href="/" class="back-to-main"><i class="fa-solid fa-arrow-left"></i> 메인으로 돌아가기</a> 
 
-    <div class="main-container">
-        <div class="image-box">
-            <img src="../img/nutrition-fact/background4.jpg" alt="background image" class="background-image">
-            <div class="text-box">
-                <h1>건강한 삶을 위한 첫걸음</h1>
-                <h2>영양 정보를 검색하세요!</h2>
-                <div class="search-bar">
-                    <input type="text" id="productName" placeholder="제품명을 입력하세요" />
-                    <button onclick="searchProduct()">검색</button>
-                </div>
-                <div id="result" class="result">
-                    <!-- 결과가 여기에 표시됩니다 -->
+
+    <!-- 초기화면 박스 -->
+        <div class="main-container">
+            <div class="image-box">
+                <img src="../img/nutrition-fact/background4.jpg" alt="background image" class="background-image">
+                <div class="text-box">
+                    <div class="text-box-1">
+                        <button class="bookmark-check-button">즐겨찾기 목록 불러오기<i class="fa-regular fa-lightbulb"></i></button>
+                    <!-- <h1>건강한 삶을 위한 첫걸음</h1> -->
+                    </div>
+                    <h2>영양 정보를 검색하세요!</h2>
+                    <div class="search-bar">
+                        <input type="text" id="productName" placeholder="제품명을 입력하세요" />
+                        <button class="search-button">검색</button>
+                    </div>
+                    <div>
+                        <p class="no-result">검색 결과가 없습니다.</p>
+                    </div>
+                    <div class="result">
+                        <!-- 결과표시 -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        async function searchProduct() {
-            const productName = document.getElementById("productName").value.trim();
-            if (productName === "") {
-                alert("제품명을 입력하세요.");
-                return;
-            }
+    <!-- 모달 박스 -->
+    <div class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <p><!-- 제품 이름 --></p>
+                    <i class="fa-regular fa-heart unfavorite"></i>
+                    <i class="fa-solid fa-heart add-to-favorite"></i> 
+                    <span class="favorite">즐겨찾기가 등록되었습니다.</span>
+                    <span class="unfavorite">즐겨찾기가 해제 되었습니다.</span>
+                </div>
+                <i class="fa-solid fa-xmark close-btn"></i>
+            </div>
 
-            const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(productName)}&json=1&fields=product_name,nutriments,image_url`;
+            <div class="modal-body">
+               <!-- 성별 선택  -->
+                <!-- <select id="genderSelect">
+                    <option value="female">여성</option>
+                    <option value="male">남성</option>
+                </select>  -->
+                <!-- 차트 -->
+                <div class="chart-container">
+                    <canvas id="myChart1"></canvas>
+                    <canvas id="myChart2"></canvas>
+                    <canvas id="myChart3"></canvas>
+                    <canvas id="myChart4"></canvas>
+                    <canvas id="myChart5"></canvas>
+                    <canvas id="myChart6"></canvas>
+                    <canvas id="myChart7"></canvas>
+                    <canvas id="myChart8"></canvas>
+                </div>
+                <p><!-- 제품 상세 정보 --></p>
+                <!-- 로딩 아이콘 -->
+                <div class="loading-container">
+                    <div id="detail-loader"></div>
+                    <p id="detail-loading-alert">로딩 중...</p>
+                </div>
+               
+           </div>
+</body>
+</html>
 
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                
-                if (data.products && data.products.length > 0) {
-                    let resultHtml = "";
-                    data.products.forEach(product => {
-                        const productName = product.product_name || "제품 이름 없음";
-                        const imageUrl = product.image_url || "https://via.placeholder.com/150";  // 이미지가 없을 때 기본 이미지
-                        const nutriments = product.nutriments || {};
-
-                        resultHtml += `<div class="product-card">
-                                            <img src="${imageUrl}" alt="${productName}" class="product-image" />
-                                            <h2>${productName}</h2>
-                                            <ul>`;
-                        
-                        if (nutriments.energy_kcal) resultHtml += `<li>칼로리: ${nutriments.energy_kcal} kcal</li>`;
-                        if (nutriments.fat) resultHtml += `<li>지방: ${nutriments.fat} g</li>`;
-                        if (nutriments.sugars) resultHtml += `<li>당류: ${nutriments.sugars} g</li>`;
-                        if (nutriments.proteins) resultHtml += `<li>단백질: ${nutriments.proteins} g</li>`;
-                        if (nutriments.carbohydrates) resultHtml += `<li>탄수화물: ${nutriments.carbohydrates} g</li>`;
-                        
-                        resultHtml += `</ul></div>`;
-                    });
-
-                    document.getElementById("result").innerHTML = resultHtml;
-                } else {
-                    document.getElementById("result").innerHTML = "<p>해당 제품을 찾을 수 없습니다.</p>";
-                }
-            } catch (error) {
-                console.error("Error fetching product data:", error);
-                document.getElementById("result").innerHTML = "<p>제품 정보를 불러오는 데 오류가 발생했습니다.</p>";
-            }
-        }
-    </script>
-</body

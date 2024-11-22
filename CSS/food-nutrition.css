@@ -2,7 +2,8 @@
 @import url(./reset.css);
 
 body {
-  font-family: "Noto Sans", sans-serif;
+  /* font-family: "Noto Sans", sans-serif; */
+  font-family: "Noto Sans KR", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,19 +15,26 @@ body {
   flex-direction: column;
 }
 
+body.search-mode {
+  justify-content: flex-start;
+  align-items: start;
+}
+
 /* '메인으로 돌아가기' 버튼 스타일 */
 .back-to-main {
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 500;
   color: #52916e;
   position: absolute;
-  top: 20px; /* 메뉴 박스 위쪽에서 20px 만큼 떨어지게 위치 */
-  left: 0; /* 메뉴 박스의 왼쪽 끝에 배치 */
-  padding-left: 20px; /* 왼쪽에 여백을 추가 */
+  top: 20px; 
+  left: 0; 
+  padding-left: 20px; 
 }
 
 .back-to-main:hover {
   color: #437A5B;
+  scale: 1;
+  left: 0px;
 }
 
 /* 메뉴 박스 */
@@ -41,7 +49,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(67, 122, 91, 0);
   padding: 25px;
   position: relative; /* 부모 요소가 상대적으로 위치할 수 있게 설정 */
-  top: 20px; /* 위로 20px 이동 */
+  top: 20px; 
 }
 
 /* 메뉴 박스 -> 이미지 박스 */
@@ -68,11 +76,11 @@ body {
 /* 메뉴 박스 -> 텍스트 상자 */
 .main-container .image-box .text-box {
   position: absolute;
-  top: 25%;
+  top: 15%;
   left: 50%;
   width: 80%;
-  height: 140px;
-  transform: translate(-50%, -50%);
+  height: 160px;
+  transform: translateX(-50%);
   background-color: white;
   border-radius: 20px;
   padding: 10px;
@@ -81,16 +89,45 @@ body {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; 
+}
+/* 검색 버튼 누를 시 텍스트 상자 크기 등 조절 */
+.main-container .image-box .text-box.search-mode {
+  justify-content: flex-start;
+  height: 400px; 
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 1560px) {
+  .main-container .image-box .text-box.search-mode {
+    height: 320px;
+  }
 }
 
-/* 건강한 삶을 위한 첫걸음 */
-.main-container .image-box .text-box h1 {
-  margin-bottom: 10px;
-  font-size: 0.9rem;
+/* 즐겨찾기 목록 감싸는 div */
+.main-container .text-box .text-box-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 즐겨찾기 목록 확인 버튼 */
+.main-container .text-box-1 .bookmark-check-button {
+  background-color: rgba(255, 255, 255, 0.3); /* 더 부드러운 투명 흰색 배경 */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 6px;
+  letter-spacing: 1.2;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #569d75;
   line-height: 1.5;
+}
+.main-container .text-box-1 .bookmark-check-button:hover {
+  color: #437A5B;
+  transform: scale(1.02); 
 }
 
 /* 영양 정보를 검색하세요! */
@@ -115,7 +152,7 @@ body {
 }
 
 .main-container .image-box .text-box .search-bar input {
-  width: 80%;
+  width: 86.5%;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -131,39 +168,416 @@ body {
   border-radius: 5px;
   cursor: url('../img/nutrition-fact/search_cursor.png') 16 16, auto;
 }
-
+@media (max-width: 1560px) {
+  .main-container .image-box .text-box .search-bar button {
+    font-size: 0.8rem;
+  }
+}
 .main-container .image-box .text-box .search-bar button:hover {
   background-color: #437A5B;
 }
 
-/* 검색 결과 */
-.result {
-  /* margin-top: 20px; */
-}
-
-.product-card {
-  margin: 20px 0;
-  text-align: center;
-}
-
-.product-card img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.product-card h2 {
-  font-size: 18px;
+/* 검색 결과 없을 때 */
+.main-container .no-result {
+  font-size: 1rem; 
+  font-weight: 700; 
+  color: #D9534F; 
   margin-top: 10px;
+  padding: 15px 5px 0 px;
+  text-align: left;
+  text-decoration: underline;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none; /* 처음에는 숨겨짐 */
 }
 
-.product-card ul {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 10px;
+/* 검색 결과 박스 */
+.main-container .result {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.02); 
+  width: 610px;
+  height: 250px;
+  margin-top: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: none;
+  overflow-y: auto;
+}
+@media (max-width: 1560px) {
+  .main-container .result {
+    width: 470px; 
+    height: 200px;
+  }
+}
+.main-container .result.no-favorite-item{
+  display: block; 
+}
+.main-container .result.when-no-result {
+  border: none;
+  background: transparent;
 }
 
-.product-card ul li {
-  margin: 5px 0;
+
+.main-container .result .product-card {
+  /* border: 1px solid gray; */
+  padding: 6px 10px 5px 10px;
 }
+@media (max-width: 1560px) {
+  .main-container .result .product-card {
+    padding-bottom: 4px;
+    padding-top: 4px;
+  }
+}
+.main-container .result .product-card:first-child {
+  padding-top: 16px;
+}
+@media (max-width: 1560px) {
+  .main-container .result .product-card:first-child {
+    padding-top: 8px;
+  }
+}
+
+.main-container .result .product-card span{
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+@media (max-width: 1560px) {
+  .main-container .result .product-card span{
+    font-size: 0.8rem;
+  }
+}
+
+.main-container .result .product-card span:hover {
+  color: #1a1a1a;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 즐겨찾기 결과 없을 때 */
+.main-container .result .product-card p.no-favorite-item {
+  font-size: 0.9em;
+  font-weight: 400;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+/* ===================== 모달 ================  */
+/* 모달 오버레이 (배경) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); 
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+  z-index: 1000; 
+  display: none;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+/* 모달 컨테이너 */
+.modal-container {
+  background-color: #ffffff;
+  width: 90%; /* 원하는 크기로 설정 */
+  height: 80%; /* 원하는 크기로 설정 */
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 수평과 수직 모두 중앙으로 이동 */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1001; /* 모달 컨텐츠가 오버레이 위로 표시되도록 설정 */
+}
+
+/* 모달 헤더 */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+/* 제목(푸드명) */
+.modal-header p {
+  font-size: 1.4rem;
+  letter-spacing: 1.5px;
+}
+
+/* 즐겨찾기 + title 박스 */
+.modal-header .modal-title {
+  display: flex;
+}
+
+/* 즐겨찾기 버튼 */
+.modal-header i.add-to-favorite,
+.modal-header i.unfavorite
+{
+  color: #569d75;
+  font-size: 1.5rem;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.modal-header i.unfavorite {
+  display: none;
+}
+
+/* 즐겨찾기 문구 */
+.modal-header span.favorite,
+.modal-header span.unfavorite {
+  display: none;
+  margin-left: 10px;
+  font-size: 0.9rem;
+  color: #888888;
+}
+
+
+/* 닫기 버튼 */
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2f5740 ;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #437A5B; 
+}
+
+/* 모달 바디 */
+.modal-body {
+  margin-top: 15px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  height: 90%;
+  color: #333;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+/* 모달 열기 시 화면 전체를 덮는 효과 (모달이 열렸을 때 적용) */
+.modal-overlay.show {
+  display: flex; /* 모달을 보이게 하기 위해 flex로 설정 */
+}
+
+/* 모달 바디 -> 차트 컨테이너 */
+.modal-body .chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/*  모달 바디 -> 성별 선택 */
+/* select#genderSelect {
+  padding: 6px;
+  font-size: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 60px;
+  cursor: pointer;
+} */
+
+
+/* ============= start: 상세 보기 로딩 박스 ============  */
+/* 상세보기 로딩 컨테이너 */
+.modal-overlay .loading-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: translate(-50%, -50%);
+}
+
+/* 상세보기 로딩 아이콘 */
+.modal-overlay #detail-loader {
+  width: 12px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+  margin-bottom: 10px;
+  display: none;
+}
+@keyframes l5 {
+    0%  {box-shadow: 20px 0 #437a5b, -20px 0 #b4cd93;background: #437a5b }
+    33% {box-shadow: 20px 0 #437a5b, -20px 0 #b4cd93;background: #b4cd93}
+    66% {box-shadow: 20px 0 #b4cd93,-20px 0 #437a5b; background: #b4cd93}
+    100%{box-shadow: 20px 0 #b4cd93,-20px 0 #437a5b; background: #437a5b}
+}
+
+/* 상세보기 로딩 중 멘트 */
+.modal-overlay #detail-loading-alert {
+  color:  #1a1a1a;
+  font-weight: 00;
+  font-size: 0.9rem;
+  text-indent: -20px;
+}
+.modal-overlay #detail-loading-alert.hide { /* 로딩 끝날 시 없어지게 */
+  color: #ffffff;
+  opacity: 0;
+}
+
+/* ==== 모달 로딩 아이콘 예비 ==== */
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+} 
+
+.tall-stack {
+  animation: slide-plate-out 6000ms infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+.plate {
+  width: 230px;
+  height: 14px;
+  background: #D3EBEA; /* 접시 색상 */
+  position: relative;
+  border-radius: 6px 6px 2rem 2rem;
+  animation: slide-plate-in 6000ms infinite;
+  transform: translateX(100vw);
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+.plate .plate-bottom {
+  content: '';
+  display: block;
+  height: 50%;
+  width: 140px;
+  background: #BCCBC7; /* 다크한 접시 색상 */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -70px;
+  border-radius: 0 0 1rem 1rem;
+  z-index: 1;
+}
+
+.plate .shadow {
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  margin-left: -90px;
+  z-index: 0;
+  width: 180px;
+  height: 10px;
+  background: rgba(0, 0, 0, .2);
+  border-radius: 80%;
+}
+
+.butter {
+  width: 48px;
+  height: 12px;
+  background: #EADD4D; 
+  margin: auto;
+  border-radius: 2px;
+  box-shadow: inset 0 -2px 0 2px rgba(105, 88, 50, .1); 
+}
+
+.pancake {
+  width: 200px;
+  height: 14px;
+  background: #D8CB9F; 
+  border-radius: 1rem;
+  box-shadow: inset 0 -2px 0 3px rgba(105, 88, 50, .1); 
+  margin: auto;
+}
+
+.falling-element {
+  transform: translateY(-100vh);
+  animation-timing-function: ease-in;
+  animation-fill-mode: forward;
+  animation: element-drop 6000ms infinite;
+  position: relative;
+}
+
+/* falling-element 애니메이션 지연 설정 */
+.falling-element:nth-child(8) {
+  animation-delay: 1.2s;
+}
+.falling-element:nth-child(7) {
+  animation-delay: 1.42s;
+}
+.falling-element:nth-child(6) {
+  animation-delay: 1.64s;
+}
+.falling-element:nth-child(5) {
+  animation-delay: 1.86s;
+}
+.falling-element:nth-child(4) {
+  animation-delay: 2.08s;
+}
+.falling-element:nth-child(3) {
+  animation-delay: 2.3s;
+}
+.falling-element:nth-child(2) {
+  animation-delay: 2.52s;
+}
+.falling-element:nth-child(1) {
+  animation-delay: 2.74s;
+}
+
+/* element-drop 애니메이션 */
+@keyframes element-drop {
+  0%, 100% {
+    transform: translateY(-100vh) scaleY(.7);
+    opacity: 1;
+  }
+  11% {
+    transform: translateY(20%) scaleY(1.2);
+  }
+  13% {
+    transform: translateY(-30%) scaleY(.9);
+  }
+  14%, 67% {
+    transform: translateY(0%) scaleY(1);
+    opacity: 1;
+  }
+  68% {
+    opacity: 0;
+    transition: none;
+    transform: translateY(-100vh) scaleY(.7);
+  }
+}
+
+/* slide-plate-in 애니메이션 */
+@keyframes slide-plate-in {
+  0% {
+    transform: translateX(100vw);
+  }
+  15%, 100% {
+    transform: translateX(0);
+  }
+}
+
+/* slide-plate-out 애니메이션 */
+@keyframes slide-plate-out {
+  65% {
+    transform: translateX(0);
+  }
+  85%, 100% {
+    transform: translateX(-100vw);
+  }
+}
+/* ======= end: 상세 보기 로딩 박스 ========  */
