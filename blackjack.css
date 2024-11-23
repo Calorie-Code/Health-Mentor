@@ -8,7 +8,7 @@ body {
 }
 
 body .card{
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     height: 220px; 
     margin-top: 10px;   
 }
@@ -33,13 +33,21 @@ body .top .logo {
     align-items: center;
     justify-content: space-around;
 }
+
+body .top .logo .logo-img{
+    height: 40px;
+}
+body .top .logo .logo-img img {
+    height: 100%;
+}
+
 body .top .logo .title {
-    font-size: 2.1rem;
+    font-size: 2.5rem;
     color: #fff;
 }
 
 body .game-board {
-    width: 60%;
+    width: 70%;
     border: 1px solid red;    
     display: flex;
     flex-direction: column;
@@ -64,9 +72,13 @@ body .game-board .row1{
 }
 
 body .game-board .row1 .row1-left {
-    border: 1px solid #000;    
-    
+    border: 1px solid #000;  
+    width: 65%;     
 }
+
+
+
+
 body .game-board .row1 .row1-left .row1-card-box .hidden-card{
     border: 1px solid blue;
     position: absolute;
@@ -76,7 +88,7 @@ body .game-board .row1 .row1-left .row1-card-box .hidden-card{
 
 
 body .game-board .row1 .row1-right {
-    width: 40%;
+    width: 35%;
     border: 1px solid red;
     display: flex;
     justify-content: center;
@@ -86,14 +98,17 @@ body .game-board .row1 .row1-right {
     padding: 10px;
 }
 body .game-board .row1 .row1-right .betting-box {
+    
     width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;    
 }
+
 body .game-board .row1 .row1-right .betting-box .betting-chip-img  {
-    width: 100px;
+    width: 140px;
+    margin-bottom: 5px;
 }
 body .game-board .row1 .row1-right .betting-box .betting-chip-img img {
     width: 100%;
@@ -107,7 +122,8 @@ body .game-board .row1 .row1-right .gamechip-box {
     align-items: center;    
 }
 body .game-board .row1 .row1-right .gamechip-box .gamechip-img {
-    width: 100px;
+    width: 140px;
+    margin-bottom: 5px;
 }
 body .game-board .row1 .row1-right .gamechip-box .gamechip-img img {
     width: 100%;
@@ -119,15 +135,19 @@ body .game-board .row1 .row1-right .gamechip-box .gamechip-img img {
 
 body .game-board .row2{
     width: 100%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;     
     justify-content: space-between;
     align-items: center;
     padding: 20px;
 }
+body .game-board .row2 .row2-left {
+    border: 1px solid #000;  
+    width: 65%; 
+}
 
 body .game-board .row2 .row2-right {    
-    width: 40%;
+    width: 35%;
     border: 1px solid red;
     display: flex;
     justify-content: center;
@@ -141,15 +161,19 @@ body .game-board .row2 .row2-right .button-box {
     justify-content: center;
     align-items: center; 
     flex-wrap: wrap;
+    /* border: 1px solid #000; */
 }
 
 body .game-board .row2 .row2-right .button-box .playbtn {
     
-    width: 48%;
+    width: 40%;
     border: 1px solid #000;    
     margin: 4px;     
+    background: rgb(18, 61, 28);
 }
 body .game-board .row2 .row2-right .button-box .playbtn p {
     text-align: center;
     padding: 10px;
 }
+
+/* 카드 크기 164px 220px */
