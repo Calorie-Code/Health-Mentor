@@ -25,6 +25,10 @@
     // 디바운스용 (displayfavorite 함수에서도 searchproduct() 중단용으로 사용)
     let timeoutId; 
 
+    // 게임 모드
+    isFoodGameMode = false;
+    console.log(isFoodGameMode);
+
 
     // ========= DOM =========== //
     // 메인 컨테이너
@@ -428,6 +432,49 @@
     }
 
 
+    // 랜덤 푸드 선택 (슬롯머신용)
+    function randomFood() {
+      const foodList = [
+        "제육볶음", "닭가슴살", "떡볶이", "굶어", "불고기", "아보카도명란덮밥", "김밥", "고등어", "마라탕", "소고기무국",
+        "오리훈제", "샐러드", "불닭볶음면", "현미밥", "갈비찜", "계란찜", "치킨", "두부조림", "김치찌개", "연어",
+        "된장찌개", "치즈돈까스", "보쌈", "연두부", "제주흑돼지", "시금치나물", "초밥", "야채볶음", "닭다리구이", "방울토마토",
+        "샤브샤브", "참치회", "갈릭버터새우", "브로콜리", "크림파스타", "된장국", "잡채", "구운채소", "해물파전", "피자",
+        "나물비빔밥", "오징어볶음", "새우튀김", "콩비지찌개", "수제버거", "비빔밥", "갈비탕", "찜닭", "스시", "두부덮밥",
+        "김치전", "치즈스틱", "매운갈비찜", "통삼겹살", "파스타", "닭갈비", "돼지국밥", "회덮밥", "피자마르겔라", "고추장찌개",
+        "양념갈비", "김치볶음밥", "비빔국수", "불고기버거", "김치말이", "쌀국수", "닭고기커리", "떡국", "회덮밥", "수제비",
+        "바지락칼국수", "미역국", "샐러드롤", "장어덮밥", "소고기 볶음밥", "자장면", "고등어조림", "애호박볶음", "오믈렛", "부대찌개",
+        "돼지불고기", "순대국밥", "어묵탕", "고추잡채", "탕수육", "쭈꾸미볶음", "콩국수", "감자탕", "순두부찌개", "매운탕",
+        "버섯전골", "연두부무침", "불고기전골", "새우젓무침", "홍합탕", "잡곡밥", "고기만두", "시래기국", "치킨너겟", "마늘빵",
+        "김치볶음", "소시지구이", "돼지고기장조림", "돈까스", "참치김밥", "떡국떡", "물냉면", "고기만두", "낙지볶음", "배추겉절이",
+        "치즈볶음밥", "어묵볶음", "오이무침", "흑미밥", "돼지고기볶음", "추어탕", "비빔밥", "얼큰한탕수육", "오징어덮밥", "갈비구이"
+      ];
+
+      const randomIndex = Math.floor(Math.random() * foodList.length);
+      return foodList[randomIndex];
+    }
+
+    // 메뉴 선택 슬롯머신 가동
+    function startSlothMachine() {
+        const $foodDisplay = document.querySelector(".food-display");
+        let count = 0;
+        const interval = setInterval(() => {
+          $foodDisplay.textContent = `오늘의 메뉴는: ${randomFood()}...`;
+          count++;
+          if (count >= 30) { // 빠르게 바뀌는 횟수를 30번으로 설정
+            clearInterval(interval);
+            $foodDisplay.textContent = `오늘의 메뉴는: ${randomFood()}❤️`; // 최종적으로 랜덤 음식 고정
+            $foodDisplay.textContent.style.color = red; 
+          }
+        }, 45); // 45ms마다 음식 변경
+    }
+  
+      
+       // 필요 DOM 불러오기
+       const $gameModal = document.querySelector('.food-game-modal.hidden');
+       const $gameContent = $gameModal.querySelector('.game-content'); // 게임 결과 표시할 DOM
+       const $gameMessage = $gameModal.querySelector('.game-message'); // 결과 안내 메시지
+
+
 
     // ================= 이벤트 핸들러 ================== //
     // 검색 이벤트
@@ -472,6 +519,7 @@
         $newDiv.classList.add("product-card");
         $newDiv.dataset.foodName = foodName;
         $newDiv.dataset.code = code;
+        $newDiv.dataset.manufacturer = manufacturer;
         $newDiv.innerHTML = `<span class="foodName">${foodName} (업체명: ${manufacturerText})</span>`;
         $resultDiv.append($newDiv);
       });
@@ -577,6 +625,7 @@
       $title.textContent = `${foodName} (업체명: ${manufacturer || '- '})`;
       $title.dataset.foodName = foodName; // 즐겨찾기 불러올 때 쓰는 용
       $title.dataset.id = code; // 즐겨찾기 불러올 때 쓰는 용
+      $title.dataset.manufacturer = manufacturer; // 즐겨찾기 불러올 때 쓰는 용
         // localStorage에서 즐겨찾기 상태 가져와서 즐겨찾기 버튼 활성화 하기
         loadFavoriteStatusHandler();
 
@@ -626,7 +675,7 @@
         $favoriteSpan.style.display = "inline";
         setTimeout(function() {
           $favoriteSpan.style.display = 'none';
-        }, 1000);
+        }, 700);
           // local storage에 제품명 상태 저장하기!!
           //      1. 필요한 값을 담은 객체 만들기
           const favoriteItemDetail = {
@@ -636,6 +685,7 @@
           }
           favoriteItems.push(favoriteItemDetail);
           localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems));
+          console.log(favoriteItems);
 
         }
     }
@@ -688,20 +738,48 @@
         return;
       }
 
-    
 
       // storage에 저장된 즐겨찾기 목록 가져와서, 화면에 표시
+      console.log('kkk');
       console.log(favoriteItemsStorage);
-      console.log($resultDiv);
       favoriteItemsStorage.forEach(item => {
-        console.log('테스트');
         $newDiv = document.createElement("div");
         $newDiv.classList.add("product-card");
         $newDiv.dataset.foodName = item.foodName;
         $newDiv.dataset.code = item.foodId;
-        $newDiv.innerHTML = `<span class="foodName">${item.foodName} (업체명:${item.manufacturer || '- '})</span>`;
+        $newDiv.dataset.manufacturer = item.foodManufacturer;
+        console.log(item.manufacturer);
+        console.log('ㅎㅎ');
+        $newDiv.innerHTML = `<span class="foodName">${item.foodName} (업체명:${item.foodManufacturer || '- '})</span>`;
         $resultDiv.append($newDiv);
       })
+    }
+
+    // =================== 푸드 랜덤 선텍 게임 ===============
+     // 검색 결과 모달만 나오는 이벤트
+     async function showFoodGameModal(e) {
+       isFoodGameMode = true; // esc 버튼 용
+       document.querySelector('.food-game-modal.hidden').style.display = 'flex'; // 모달 활성화
+     }
+
+    function playRandomFoodGame(e) {
+      randomFood(); // 랜덤 푸드 선택해서
+      startSlothMachine(); // 돌리다가 보여주기
+    }
+
+    // 게임 모달 클로즈 이벤트
+    // 1. close 버튼
+    function closeGameModal(e) {
+      // 모달 비활성화
+      document.querySelector('.food-game-modal.hidden').style.display = 'none';
+    }
+
+    // 2. 모달 활성화 상태에서 esc
+    async function escCloseGameModal(e) {
+      if (!isFoodGameMode) return; // 모달 활성화상태에서만 작동
+      if (e.key !== "Escape") return;
+      closeGameModal();
+      isModalMode = false;
     }
 
 
@@ -733,3 +811,14 @@
 
     // 즐겨찾기 목록 보기 버튼 이벤트
     document.querySelector('.bookmark-check-button').addEventListener('click', displayFavoritesHandler);
+
+    // 푸드 랜덤 선택 게임 이벤트 모달 열기
+    document.querySelector('.today-button').addEventListener("click", showFoodGameModal);
+
+    // 게임 종료 버튼 이벤트 (1) 클로즈 버튼 누를 시
+    document.querySelector('.food-game-close-btn').addEventListener("click", closeGameModal);
+
+    // 게임 종료 버튼 이벤트 (2) 모달 열린 상태에서 esc 누를 시
+    document.addEventListener("keydown", escCloseGameModal);
+
+    document.querySelector(".generate-food-button").addEventListener("click", playRandomFoodGame);
