@@ -25,8 +25,11 @@
 </head>
 <body>
     <!-- 메인으로 돌아 가기 -->
-    <a href="/" class="back-to-main"><i class="fa-solid fa-arrow-left"></i> 메인으로 돌아가기</a> 
-
+    <footer class="menu-bar">
+        <a href="../index.html" class="back-to-main"><i class="fa-solid fa-arrow-left"></i> 메인으로 돌아가기</a> 
+        <button class="today-button">오늘 뭐 먹지?</button>
+    </footer>
+    
 
     <!-- 초기화면 박스 -->
         <div class="main-container">
@@ -52,7 +55,7 @@
             </div>
         </div>
 
-    <!-- 모달 박스 -->
+    <!-- 상세 박스 -->
     <div class="modal-overlay">
         <div class="modal-container">
             <div class="modal-header">
@@ -89,8 +92,22 @@
                     <div id="detail-loader"></div>
                     <p id="detail-loading-alert">로딩 중...</p>
                 </div>
-               
            </div>
+        </div>
+    </div>
+
+    <!-- 랜덤 음식 모달 박스 -->
+    <div class="food-game-modal hidden">
+        <div class="food-game-modal-content">
+            <span class="close-game-modal"><i class="fa-solid fa-xmark food-game-close-btn"></i></span>
+            <h2>오늘 뭐 먹지?!?!</h2>
+            <p class="food-display">오늘의 메뉴는...........................</p>
+            <button class="generate-food-button">음식 추천 받기</button>
+            <div class="food-result">
+            <!-- 추천 음식 결과가 여기에 표시됩니다 -->
+        </div>
+        </div>
+    </div>
 </body>
 </html>
 

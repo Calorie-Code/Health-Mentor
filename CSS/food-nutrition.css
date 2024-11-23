@@ -20,14 +20,36 @@ body.search-mode {
   align-items: start;
 }
 
-/* '메인으로 돌아가기' 버튼 스타일 */
-.back-to-main {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #52916e;
+ /* footer 메뉴 */
+.menu-bar {
   position: absolute;
   top: 20px; 
   left: 0; 
+  padding-left: 20px;   
+}
+
+/* "오늘 뭐 먹지?" 버튼 스타일 */
+.today-button {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #52916e;
+  background: transparent;
+  border: none;;
+  cursor: pointer;
+  margin-left: 50px;
+  
+}
+.today-button:hover {
+  color: #437A5B;
+  scale: 1.05;
+}
+
+
+/* '메인으로 돌아가기' 버튼 스타일 */
+.back-to-main {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #52916e;
   padding-left: 20px; 
 }
 
@@ -48,7 +70,7 @@ body.search-mode {
   border-radius: 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(67, 122, 91, 0);
   padding: 25px;
-  position: relative; /* 부모 요소가 상대적으로 위치할 수 있게 설정 */
+  position: relative; /* 자식 요소가 상대적으로 위치할 수 있게 설정 */
   top: 20px; 
 }
 
@@ -285,14 +307,14 @@ body.search-mode {
 /* 모달 컨테이너 */
 .modal-container {
   background-color: #ffffff;
-  width: 90%; /* 원하는 크기로 설정 */
-  height: 80%; /* 원하는 크기로 설정 */
+  width: 90%; 
+  height: 80%;
   border-radius: 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* 수평과 수직 모두 중앙으로 이동 */
+  transform: translate(-50%, -50%); 
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -581,3 +603,94 @@ body.search-mode {
   }
 }
 /* ======= end: 상세 보기 로딩 박스 ========  */
+
+
+/* ==== 랜덤 제품 선택 박스 ==== */
+/* 배경 */
+.food-game-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); 
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+  z-index: 1000; 
+  display: none;
+}
+.modal-overlay.show {
+  display: flex;
+}
+
+/* 게임 박스 */
+.food-game-modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  height: 60%;
+  background: #ffffff;
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(67, 122, 91, 0);
+  padding: 25px;
+  position: relative; /* 부모 요소가 상대적으로 위치할 수 있게 설정 */
+  top: 20px; 
+}
+
+.close-game-modal {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+
+/*  오늘의 추천 음식 */
+.food-game-modal-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+ /* 결과 */
+.food-game-modal-content p {
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #000000;
+}
+/* 추첨 버튼 */
+.generate-food-button {
+  background-color: #ff9800; /* 주황색 배경 */
+  color: #ffffff; /* 흰색 텍스트 */
+  font-size: 1.2rem; /* 적당히 큰 글씨 크기 */
+  font-weight: bold; /* 굵은 텍스트 */
+  padding: 12px 24px; /* 안쪽 여백 */
+  border: none; /* 테두리 없음 */
+  border-radius: 8px; /* 살짝 둥근 모서리 */
+  cursor: pointer; /* 클릭 가능한 포인터 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 약간의 그림자 */
+  transition: all 0.3s ease; /* 부드러운 애니메이션 */
+}
+
+/* 호버 효과 */
+.generate-food-button:hover {
+  background-color: #f57c00; /* 더 진한 주황색 */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* 그림자 확대 */
+  transform: scale(1.05); /* 살짝 확대 */
+}
+
+/* 클릭 효과 */
+.generate-food-button:active {
+  background-color: #e65100; /* 가장 진한 주황색 */
+  transform: scale(0.95); /* 살짝 축소 */
+}
+
+
+/* 게임 클로즈 */
+.food-game-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2f5740 ;
+  cursor: pointer;
+}
