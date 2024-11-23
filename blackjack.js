@@ -543,6 +543,8 @@ function compareTotalSum() {
   console.log(`최종 플레이어 합 =${playerTotalSum}`);
   console.log(newCardArr);
 
+
+
   //*다음판을 위한 초기화
   setTimeout(resetGame, 2000);
 }

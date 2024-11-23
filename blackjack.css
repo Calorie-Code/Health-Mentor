@@ -15,6 +15,7 @@ body .card{
 
 body .card img {
     height: 100%;
+    
 }
 
 body .top {
@@ -109,6 +110,7 @@ body .game-board .row1 .row1-right .betting-box {
 body .game-board .row1 .row1-right .betting-box .betting-chip-img  {
     width: 140px;
     margin-bottom: 5px;
+    
 }
 body .game-board .row1 .row1-right .betting-box .betting-chip-img img {
     width: 100%;
