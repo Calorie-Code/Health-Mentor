@@ -314,9 +314,7 @@ let cards = [
   },
 ];
 
-// console.log(randomCardNum);
-// console.log(randomCardShape);
-// console.log(cards[0].suit);
+
 let newRandomCard;
 let newCardArr = []; //게임 진행 중에 뽑힌 카드가 쌓인 배열
 let alReadyCard = 0;
@@ -394,8 +392,7 @@ function doubleClickHandler(e) {
 //stand 클릭이벤트 (딜러의 카드 합이 16 넘을때까지 카드 추가)
 $stand.addEventListener("click", (e) => {
   while (dealerTotalSum < 17) {
-    addCardDealer();
-    // console.log(`현재까지 딜러 카드의 총합 = ${dealerTotalSum}`);
+    addCardDealer();     
   }
   compareTotalSum(); //결과보기
 });
@@ -404,17 +401,15 @@ $stand.addEventListener("click", (e) => {
 function RandomCard() {
   let randomCardShape = Math.floor(Math.random() * 4) + 1; //랜덤 문양
 
-  let randomCardNum = Math.floor(Math.random() * 13) + 1; // 랜덤 숫자
-  //   console.log(randomCardNum);
+  let randomCardNum = Math.floor(Math.random() * 13) + 1; // 랜덤 숫자  
 
   //newCardList = 랜덤문양 카드 모두 담은 배열
   let newCardList = cards.filter((card) => card.suit === randomCardShape);
   //newRandomCard = 랜덤으로 골라낸 카드
   newRandomCard = newCardList[randomCardNum - 1];
-
-  // console.log(newRandomCard);
+  
   return newRandomCard;
-  //  newCardList.filter(card => card.value === randomCardNum);
+  
 }
 
 //카드 비교 함수
@@ -446,13 +441,13 @@ function getCardOne() {
       alReadyCard = 0;
       continue;
     }
-    // console.log("hit버튼 클릭 플레이어에게 카드를 부여합니다.");    
+    // console.log("hit버튼 클릭 플레이어에게 카드를 부여합니다.");
 
     const $img = document.createElement("img");
     $img.src = `img/${newRandomCard.src}`;
     $playerCard.appendChild($img);
   } //end for
-  playerTotalSum += currentCardValue;  
+  playerTotalSum += currentCardValue;
 }
 
 //딜러 카드 16보다 작아서 카드 주기
@@ -466,16 +461,12 @@ function addCardDealer() {
         alReadyCard = 0;
         continue;
       }
-      //   console.log("stand버튼 클릭 딜러에게 카드를 부여합니다.");
       const $img = document.createElement("img");
       $img.src = `img/${newRandomCard.src}`;
       $dealerCard.appendChild($img);
     }
   }
-  dealerTotalSum += currentCardValue;
-  // if (dealerTotalSum > 21) {
-  //   compareTotalSum;
-  // }
+  dealerTotalSum += currentCardValue;  
 }
 
 //게임초기세팅
@@ -483,6 +474,7 @@ function startTabel() {
   for (i = 0; i <= 3; i++) {
     RandomCard();
     compareCard();
+
     //카드를 비교했을때 기존에 뽑은 카드가 뽑혔다면 다시 뽑고 alReadyCard의 값을 0으로 되돌린다.
     if (alReadyCard === 99) {
       i--;
@@ -501,16 +493,28 @@ function startTabel() {
       }
       $dealerCard.appendChild($img);
       dealerTotalSum += currentCardValue; //딜러 카드 총합 구하기
+      //딜러 합 21 초과 즉시 게임종료
+      if (dealerTotalSum > 21) {
+        console.log("딜러 카드가 21을 초과했습니다.");
+        compareTotalSum(); // 게임 결과를 비교하고 종료
+        return; // 딜러의 카드를 추가하지 않음
+      }
     } else {
       //   console.log("플레이어에게 카드를 부여합니다.");
       const $img = document.createElement("img");
       $img.src = `img/${newRandomCard.src}`;
       $playerCard.appendChild($img);
       playerTotalSum += currentCardValue; //플레이어 카드 총합 구하기
+
+      //플레이어 카드가 21 넘으면 게임종료
+      if (playerTotalSum > 21) {
+        console.log("플레이어가 21을 초과했습니다.");
+        compareTotalSum(); // 게임 결과를 비교하고 종료
+        return; // 딜러의 카드를 추가하지 않음
+      }
     }
   }
-  //newCardArr는 반복 실행을 통해 4장의 카드를 뽑고 종료된다
-  //   myCoin = myCoin - bettingChip;
+  //newCardArr는 반복 실행을 통해 4장의 카드를 뽑고 종료된다  
   chipSetting(); //베팅 설정
   console.log(newCardArr);
 }
@@ -556,6 +560,7 @@ function startGame() {
 
     startTabel(); // 첫 번째 판 시작
     gameRound++; // 게임 회차 증가
+    console.log(`${gameRound}번째판 시작`);
   } else {
     console.log(`세 판이 끝났습니다. 게임 종료. 총 점수:${myCoin}`);
     // 게임 종료 처리 (예: 초기화, 종료 메시지 등)
@@ -577,5 +582,4 @@ function resetGame() {
 }
 
 startGame();
-// console.log(`딜러 카드의 총합 = ${dealerTotalSum}`);
-// console.log(`플레이어 카드의 총합 = ${playerTotalSum}`);
+
