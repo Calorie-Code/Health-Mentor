@@ -370,6 +370,14 @@ function doubleClickHandler(e) {
   bettingChip *= 2; //현재 배팅값 두배 올리기
   chipSetting();
   getCardOne(); //플레이어카드 한장받기
+
+  //플레이어 카드가 21 넘으면 게임종료
+  if (playerTotalSum > 21) {
+    console.log("플레이어가 21을 초과했습니다.");
+    compareTotalSum(); // 게임 결과를 비교하고 종료
+    return; // 딜러의 카드를 추가하지 않음
+  }
+
   //딜러 차례 16이하라면 한장 가져감
   if (playerTotalSum <= 21 && dealerTotalSum < 17) {
     addCardDealer();
@@ -443,13 +451,7 @@ function getCardOne() {
     $img.src = `img/${newRandomCard.src}`;
     $playerCard.appendChild($img);
   } //end for
-  playerTotalSum += currentCardValue;
-  // 플레이어의 점수가 21을 초과한 경우
-  if (playerTotalSum > 21) {
-    console.log("플레이어가 21을 초과했습니다.");
-    compareTotalSum(); // 결과 비교 및 게임 종료
-    return; // 딜러 차례를 건너뜀
-  }
+  playerTotalSum += currentCardValue;  
 }
 
 //딜러 카드 16보다 작아서 카드 주기
@@ -470,9 +472,9 @@ function addCardDealer() {
     }
   }
   dealerTotalSum += currentCardValue;
-  if (dealerTotalSum > 21) {
-    compareTotalSum;
-  }
+  // if (dealerTotalSum > 21) {
+  //   compareTotalSum;
+  // }
 }
 
 //게임초기세팅
