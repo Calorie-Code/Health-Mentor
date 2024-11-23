@@ -338,10 +338,13 @@ const $stand = document.querySelector(".stand-button");
 const $split = document.querySelector(".split-button");
 
 //hit 클릭이벤트 카드 한장 뽑기
-$hit.addEventListener("click", () => {
+$hit.addEventListener("click", hitClickHandler);
+
+function hitClickHandler(e) {
   getCardOne(); //플레이어에게 카드 한장 주기
 
-  if (playerTotalSum > 21) {
+  if (playerTotalSum > 21) {    
+
     console.log("플레이어가 21을 초과했습니다.");
     compareTotalSum(); // 게임 결과를 비교하고 종료
     return; // 딜러의 카드를 추가하지 않음
@@ -358,7 +361,8 @@ $hit.addEventListener("click", () => {
     compareTotalSum(); // 게임 결과를 비교하고 종료
     return; // 딜러의 카드를 추가하지 않음
   }
-});
+  
+}
 
 //double 클릭이벤트 베팅칩 두배 증가
 $double.addEventListener("click", doubleClickHandler);
@@ -390,12 +394,25 @@ function doubleClickHandler(e) {
 }
 
 //stand 클릭이벤트 (딜러의 카드 합이 16 넘을때까지 카드 추가)
-$stand.addEventListener("click", (e) => {
+// $stand.addEventListener("click", (e) => {
+//   while (dealerTotalSum < 17) {
+//     addCardDealer();     
+//   }
+//   compareTotalSum(); //결과보기
+// });
+$stand.addEventListener("click", standClickHandler);
+
+function standClickHandler (e) {  
+  //모든버튼막기
+  $hit.removeEventListener("click", hitClickHandler);
+  $double.removeEventListener("click", doubleClickHandler);
+  $stand.removeEventListener("click", standClickHandler);
+
   while (dealerTotalSum < 17) {
     addCardDealer();     
   }
   compareTotalSum(); //결과보기
-});
+}
 
 //랜덤카드 만들기
 function RandomCard() {
@@ -543,7 +560,9 @@ function compareTotalSum() {
   console.log(`최종 플레이어 합 =${playerTotalSum}`);
   console.log(newCardArr);
 
-
+  $hit.removeEventListener("click", hitClickHandler);
+  $double.removeEventListener("click", doubleClickHandler);
+  $stand.removeEventListener("click", standClickHandler);
 
   //*다음판을 위한 초기화
   setTimeout(resetGame, 2000);
@@ -557,7 +576,7 @@ function chipSetting() {
 
 //*게임 시작
 function startGame() {
-  if (gameRound < 3) {
+  if (gameRound < 5) {
     console.log(`현재 보유칩은 : ${myCoin}입니다.`);
 
     startTabel(); // 첫 번째 판 시작
@@ -578,7 +597,10 @@ function resetGame() {
   newCardArr = []; // 카드 배열 초기화
   alReadyCard = 0; // 카드 중복 방지 초기화
   bettingChip = 10;
+
+  $hit.addEventListener("click", hitClickHandler);
   $double.addEventListener("click", doubleClickHandler);
+  $stand.addEventListener("click", standClickHandler);
 
   startGame(); // 세 번째 판까지 자동으로 시작
 }
