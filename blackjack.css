@@ -57,6 +57,7 @@ body .game-board {
     position: relative;
 }
 
+
 body .game-board .game-player {
     font-size: 2.1rem;
     color: #fff;
@@ -77,15 +78,71 @@ body .game-board .row1 .row1-left {
     width: 65%;     
 }
 
-
-
-
 body .game-board .row1 .row1-left .row1-card-box .hidden-card{
     border: 1px solid blue;
     position: absolute;
     left: -250px; 
     top: 150px;
 }
+/* 카드 겹쳐서 쌓기 */
+body .game-board .row1 .row1-left .row1-card-box .dealer-card {    
+    display: flex;
+    position: relative;
+}
+body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(1){
+    position: absolute; 
+}
+body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(2){    
+    position: absolute;
+    left:  82px;
+}
+body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(3){    
+    position: absolute;
+    left:  164px;
+}
+body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(4){    
+    position: absolute;
+    left:  246px;
+}
+body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(5){    
+    position: absolute;
+    left:  328px;
+}
+body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(6){    
+    position: absolute;
+    left:  410px;
+}
+
+body .game-board .row2 .row2-left .row2-card-box .player-card {    
+    border: 1px solid yellow;
+    display: flex;
+    position: relative;
+}
+body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(1){
+    position: absolute;
+}
+body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(2){
+    position: absolute;
+    left:  82px;
+}
+body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(3){
+    position: absolute;
+    left:  164px;
+}
+body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(4){
+    position: absolute;
+    left:  246px;
+}
+body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(5){
+    position: absolute;
+    left:  328px;
+}
+body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(6){
+    position: absolute;
+    left:  410px;
+}
+
+
 
 
 body .game-board .row1 .row1-right {
@@ -98,6 +155,7 @@ body .game-board .row1 .row1-right {
     color: #fff; 
     padding: 10px;
 }
+
 body .game-board .row1 .row1-right .betting-box {
     
     width: 50%;
