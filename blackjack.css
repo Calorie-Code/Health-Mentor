@@ -48,13 +48,12 @@ body .top .logo .title {
 }
 
 body .game-board {
-    width: 70%;
-    border: 1px solid red;    
+    width: 70%;    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    /* position: relative; */
 }
 
 
@@ -64,8 +63,7 @@ body .game-board .game-player {
 }
 
 body .game-board .row1{
-    width: 100%;
-    border: 1px solid violet;
+    width: 100%;    
     display: flex;     
     justify-content: space-between;
     align-items: center;
@@ -73,81 +71,95 @@ body .game-board .row1{
     
 }
 
-body .game-board .row1 .row1-left {
-    border: 1px solid #000;  
+body .game-board .row1 .row1-left {     
     width: 65%;     
 }
 
-body .game-board .row1 .row1-left .row1-card-box .hidden-card{
-    border: 1px solid blue;
-    position: absolute;
+body .game-board .row1 .row1-left .row1-card-box .hidden-card{    
+    /* position: absolute;
     left: -250px; 
-    top: 150px;
+    top: 150px; */
+    position: fixed;
+    top: 350px;
+    left: 40px;
+
 }
 /* 카드 겹쳐서 쌓기 */
+/* 딜러 카드 배분 */
 body .game-board .row1 .row1-left .row1-card-box .dealer-card {    
     display: flex;
     position: relative;
 }
 body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(1){
-    position: absolute; 
+    position: absolute;
+    animation: move-toDealer 2s; 
 }
 body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(2){    
     position: absolute;
     left:  82px;
+    animation: move-toDealer2 2s;
 }
 body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(3){    
     position: absolute;
     left:  164px;
+    animation: move-toDealer3 2s;
 }
 body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(4){    
     position: absolute;
     left:  246px;
+    animation: move-toDealer4 2s;
 }
 body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(5){    
     position: absolute;
     left:  328px;
+    animation: move-toDealer5 2s;
 }
 body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(6){    
     position: absolute;
     left:  410px;
+    animation: move-toDealer6 2s;
 }
 
-body .game-board .row2 .row2-left .row2-card-box .player-card {    
-    border: 1px solid yellow;
+/* 플레이어 카드 배분 */
+body .game-board .row2 .row2-left .row2-card-box .player-card {       
     display: flex;
     position: relative;
 }
 body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(1){
     position: absolute;
+    animation: move-toPlayer 2s;
 }
 body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(2){
     position: absolute;
     left:  82px;
+    animation: move-toPlayer2 2s;
 }
 body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(3){
     position: absolute;
     left:  164px;
+    animation: move-toPlayer3 2s;
 }
 body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(4){
     position: absolute;
     left:  246px;
+    animation: move-toPlayer4 2s;
 }
 body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(5){
     position: absolute;
     left:  328px;
+    animation: move-toPlayer5 2s;
 }
 body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(6){
     position: absolute;
     left:  410px;
+    animation: move-toPlayer6 2s;
 }
 
 
 
 
 body .game-board .row1 .row1-right {
-    width: 35%;
-    border: 1px solid red;
+    width: 35%;    
     display: flex;
     justify-content: center;
     align-items: center;   
@@ -166,8 +178,10 @@ body .game-board .row1 .row1-right .betting-box {
 }
 
 body .game-board .row1 .row1-right .betting-box .betting-chip-img  {
-    width: 140px;
+    /* width: 140px; */
+    width: 100px;
     margin-bottom: 5px;
+    margin-top: 100px;
     
 }
 body .game-board .row1 .row1-right .betting-box .betting-chip-img img {
@@ -182,8 +196,10 @@ body .game-board .row1 .row1-right .gamechip-box {
     align-items: center;    
 }
 body .game-board .row1 .row1-right .gamechip-box .gamechip-img {
-    width: 140px;
+    /* width: 140px; */
+    width: 100px;
     margin-bottom: 5px;
+    margin-top: 100px;
 }
 body .game-board .row1 .row1-right .gamechip-box .gamechip-img img {
     width: 100%;
@@ -201,14 +217,12 @@ body .game-board .row2{
     align-items: center;
     padding: 20px;
 }
-body .game-board .row2 .row2-left {
-    border: 1px solid #000;  
+body .game-board .row2 .row2-left {     
     width: 65%; 
 }
 
-body .game-board .row2 .row2-right {    
-    width: 35%;
-    border: 1px solid red;
+body .game-board .row2 .row2-right {   
+    width: 35%;   
     display: flex;
     justify-content: center;
     align-items: center;   
@@ -224,10 +238,8 @@ body .game-board .row2 .row2-right .button-box {
     /* border: 1px solid #000; */
 }
 
-body .game-board .row2 .row2-right .button-box .playbtn {
-    
-    width: 40%;
-    border: 1px solid #000;    
+body .game-board .row2 .row2-right .button-box .playbtn {    
+    width: 40%;    
     margin: 4px;     
     background: rgb(18, 61, 28);
 }
@@ -237,3 +249,109 @@ body .game-board .row2 .row2-right .button-box .playbtn p {
 }
 
 /* 카드 크기 164px 220px */
+/* 딜러 카드 배분 */
+@keyframes move-toDealer {
+    0% {
+        transform: translateX(-270px) translateY(120px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+@keyframes move-toDealer2 {
+    0% {
+        transform: translateX(-352px) translateY(120px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+@keyframes move-toDealer3 {
+    0% {
+        transform: translateX(-434px) translateY(120px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+@keyframes move-toDealer4 {
+    0% {
+        transform: translateX(-516px) translateY(120px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+@keyframes move-toDealer5 {
+    0% {
+        transform: translateX(-598px) translateY(120px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+@keyframes move-toDealer6 {
+    0% {
+        transform: translateX(-680px) translateY(120px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+
+
+/* 플레이어 카드 배분 */
+@keyframes move-toPlayer {
+    0% {
+        transform: translateX(-270px) translateY(-180px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+@keyframes move-toPlayer2 {
+    0% {
+        transform: translateX(-352px) translateY(-180px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes move-toPlayer3 {
+    0% {
+        transform: translateX(-434px) translateY(-180px);
+    }                               
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes move-toPlayer4 {
+    0% {
+        transform: translateX(-516px) translateY(-180px);
+    }                               
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes move-toPlayer5 {
+    0% {
+        transform: translateX(-598px) translateY(-180px);
+    }                               
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes move-toPlayer6 {
+    0% {
+        transform: translateX(-680px) translateY(-180px);
+    }                               
+    100%{
+        transform: translateX(0px);
+    }
+}
+
