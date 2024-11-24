@@ -92,12 +92,12 @@ body .game-board .row1 .row1-left .row1-card-box .dealer-card {
 }
 body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(1){
     position: absolute;
-    animation: move-toDealer 2s; 
+    animation: move-toDealer 1s; 
 }
 body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(2){    
     position: absolute;
     left:  82px;
-    animation: move-toDealer2 2s;
+    animation: move-toDealer2 1s;
 }
 body .game-board .row1 .row1-left .row1-card-box .dealer-card img:nth-child(3){    
     position: absolute;
@@ -127,12 +127,12 @@ body .game-board .row2 .row2-left .row2-card-box .player-card {
 }
 body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(1){
     position: absolute;
-    animation: move-toPlayer 2s;
+    animation: move-toPlayer 1s;
 }
 body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(2){
     position: absolute;
     left:  82px;
-    animation: move-toPlayer2 2s;
+    animation: move-toPlayer2 1s;
 }
 body .game-board .row2 .row2-left .row2-card-box .player-card img:nth-child(3){
     position: absolute;
