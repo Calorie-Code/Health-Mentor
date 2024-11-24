@@ -355,3 +355,27 @@ body .game-board .row2 .row2-right .button-box .playbtn p {
     }
 }
 
+
+/* 모달 */
+/* 모달 배경 레이어 스타일 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 모달 콘텐츠 스타일 */
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 50%;
+  }

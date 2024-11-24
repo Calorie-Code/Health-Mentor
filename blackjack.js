@@ -337,6 +337,11 @@ const $double = document.querySelector(".double-button");
 const $stand = document.querySelector(".stand-button");
 const $split = document.querySelector(".split-button");
 
+//모달
+const $closeModalBtn = document.querySelector('.close-btn');
+const $modalOverlay = document.getElementById('modalOverlay');
+const $modalText = document.querySelector('.modal-text');
+
 //hit 클릭이벤트 카드 한장 뽑기
 $hit.addEventListener("click", hitClickHandler);
 
@@ -583,8 +588,14 @@ function startGame() {
     gameRound++; // 게임 회차 증가
     console.log(`${gameRound}번째판 시작`);
   } else {
-    console.log(`세 판이 끝났습니다. 게임 종료. 총 점수:${myCoin}`);
+    console.log(`게임 종료. 총 점수:${myCoin}`);
     // 게임 종료 처리 (예: 초기화, 종료 메시지 등)
+    //모달창 실행  
+    $hit.removeEventListener("click", hitClickHandler);
+    $double.removeEventListener("click", doubleClickHandler);
+    $stand.removeEventListener("click", standClickHandler); 
+    
+    openModal();
   }
 }
 
@@ -603,6 +614,36 @@ function resetGame() {
   $stand.addEventListener("click", standClickHandler);
 
   startGame(); // 세 번째 판까지 자동으로 시작
+}
+
+// 모달창
+function openModal() {   
+  $modalOverlay.style.display = 'flex'; 
+  if(myCoin >= 530) {
+    $modalText.textContent = `축하합니다. 총 보유 코인 : ${myCoin}개로 상품 획득에 성공하셨습니다!`
+  }
+  else{
+    $modalText.textContent = `총 보유 코인 : ${myCoin}개로 상품 획득에 실패하였습니다.
+     재도전을 원하신다면 링크를 공유해주세요!`
+  }
+
+  //모달 닫기 버튼 클릭 시 모달 닫기
+  $closeModalBtn.addEventListener('click', () => {
+    $modalOverlay.style.display = 'none';
+  });
+  // ESC 키로 모달 닫기
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      $modalOverlay.style.display = 'none';
+    }
+  });
+
+  // 모달 외부 클릭 시 모달 닫기
+  $modalOverlay.addEventListener('click', (event) => {
+    if (event.target === $modalOverlay) {
+      $modalOverlay.style.display = 'none';
+    }
+  });
 }
 
 startGame();
