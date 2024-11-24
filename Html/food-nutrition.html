@@ -11,17 +11,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- noto sans kr 글씨체 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- jua 글씨체 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jua&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script src="../javascript/food-nutrition.js" defer></script>
     <!-- chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <!-- script -->
+    <script src="../javascript/food-nutrition-key.js" defer></script>
+    <script src="../javascript/food-nutrition.js" defer></script>
 </head>
 <body>
     <!-- 메인으로 돌아 가기 -->
@@ -38,7 +36,6 @@
                 <div class="text-box">
                     <div class="text-box-1">
                         <button class="bookmark-check-button">즐겨찾기 목록 불러오기<i class="fa-regular fa-lightbulb"></i></button>
-                    <!-- <h1>건강한 삶을 위한 첫걸음</h1> -->
                     </div>
                     <h2>영양 정보를 검색하세요!</h2>
                     <div class="search-bar">
@@ -55,7 +52,7 @@
             </div>
         </div>
 
-    <!-- 상세 박스 -->
+    <!-- 상세보기 박스 -->
     <div class="modal-overlay">
         <div class="modal-container">
             <div class="modal-header">
