@@ -1,7 +1,6 @@
     // =============전역 변수 =============== //
     // API 주소
-    const apiKey =
-      "ccStZzcWOtwXEPyP7883p9z3cpgynAtuqu2jduhjkmFE0POBfxWkCOAvSjMPvqOeJgAK8IgXTzwo%2B6rZfQduZQ%3D%3D";
+    const apiKey = apiKeyIgnore;
     const pageNo = 1;
     const numberOfRows = 100;
 
