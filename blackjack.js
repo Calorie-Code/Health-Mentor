@@ -351,7 +351,10 @@ function hitClickHandler(e) {
   if (playerTotalSum > 21) {    
 
     console.log("플레이어가 21을 초과했습니다.");
-    compareTotalSum(); // 게임 결과를 비교하고 종료
+    $hit.removeEventListener("click", hitClickHandler);
+    $double.removeEventListener("click", doubleClickHandler);
+    $stand.removeEventListener("click", standClickHandler);
+    setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
     return; // 딜러의 카드를 추가하지 않음
   }
 
@@ -363,7 +366,10 @@ function hitClickHandler(e) {
   //딜러카드가 21넘으면 바로 비교후 종료
   if (dealerTotalSum > 21) {
     console.log("딜러 카드가 21을 초과했습니다.");
-    compareTotalSum(); // 게임 결과를 비교하고 종료
+    $hit.removeEventListener("click", hitClickHandler);
+    $double.removeEventListener("click", doubleClickHandler);
+    $stand.removeEventListener("click", standClickHandler);
+    setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
     return; // 딜러의 카드를 추가하지 않음
   }
   
@@ -381,7 +387,10 @@ function doubleClickHandler(e) {
   //플레이어 카드가 21 넘으면 게임종료
   if (playerTotalSum > 21) {
     console.log("플레이어가 21을 초과했습니다.");
-    compareTotalSum(); // 게임 결과를 비교하고 종료
+    $hit.removeEventListener("click", hitClickHandler);
+    $double.removeEventListener("click", doubleClickHandler);
+    $stand.removeEventListener("click", standClickHandler);
+    setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
     return; // 딜러의 카드를 추가하지 않음
   }
 
@@ -392,7 +401,10 @@ function doubleClickHandler(e) {
   //딜러카드가 21넘으면 바로 비교후 종료
   if (dealerTotalSum > 21) {
     console.log("딜러 카드가 21을 초과했습니다.");
-    compareTotalSum(); // 게임 결과를 비교하고 종료
+    $hit.removeEventListener("click", hitClickHandler);
+    $double.removeEventListener("click", doubleClickHandler);
+    $stand.removeEventListener("click", standClickHandler);
+    setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
     return; // 딜러의 카드를 추가하지 않음
   }
   $double.removeEventListener("click", doubleClickHandler);
@@ -518,7 +530,10 @@ function startTabel() {
       //딜러 합 21 초과 즉시 게임종료
       if (dealerTotalSum > 21) {
         console.log("딜러 카드가 21을 초과했습니다.");
-        compareTotalSum(); // 게임 결과를 비교하고 종료
+        $hit.removeEventListener("click", hitClickHandler);
+        $double.removeEventListener("click", doubleClickHandler);
+        $stand.removeEventListener("click", standClickHandler);
+        setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
         return; // 딜러의 카드를 추가하지 않음
       }
     } else {
@@ -531,7 +546,10 @@ function startTabel() {
       //플레이어 카드가 21 넘으면 게임종료
       if (playerTotalSum > 21) {
         console.log("플레이어가 21을 초과했습니다.");
-        compareTotalSum(); // 게임 결과를 비교하고 종료
+        $hit.removeEventListener("click", hitClickHandler);
+        $double.removeEventListener("click", doubleClickHandler);
+        $stand.removeEventListener("click", standClickHandler);
+        setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
         return; // 딜러의 카드를 추가하지 않음
       }
     }
@@ -561,16 +579,17 @@ function compareTotalSum() {
     console.log("무승부");
   }
 
-  console.log(`최종 딜러 합 =${dealerTotalSum}`);
-  console.log(`최종 플레이어 합 =${playerTotalSum}`);
+  // console.log(`최종 딜러 합 =${dealerTotalSum}`);
+  // console.log(`최종 플레이어 합 =${playerTotalSum}`);
   console.log(newCardArr);
 
-  $hit.removeEventListener("click", hitClickHandler);
-  $double.removeEventListener("click", doubleClickHandler);
-  $stand.removeEventListener("click", standClickHandler);
-
+  // $hit.removeEventListener("click", hitClickHandler);
+  // $double.removeEventListener("click", doubleClickHandler);
+  // $stand.removeEventListener("click", standClickHandler); 
+  
   //*다음판을 위한 초기화
   setTimeout(resetGame, 2000);
+  
 }
 
 //베팅설정
@@ -616,7 +635,7 @@ function resetGame() {
   startGame(); // 세 번째 판까지 자동으로 시작
 }
 
-// 모달창
+// 게임 종료 모달창
 function openModal() {   
   $modalOverlay.style.display = 'flex'; 
   if(myCoin >= 530) {
