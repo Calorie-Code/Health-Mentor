@@ -19,7 +19,8 @@ body .card img {
 }
 
 body .top {
-    background: #3F3F3F;
+    /* background: #3F3F3F; */
+    background: rgb(12, 12, 12);
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -243,6 +244,10 @@ body .game-board .row2 .row2-right .button-box .playbtn {
     margin: 4px;     
     background: rgb(18, 61, 28);
 }
+body .game-board .row2 .row2-right .button-box .playbtn:hover {         
+    background: rgb(12, 12, 12);
+    cursor: pointer;
+}
 body .game-board .row2 .row2-right .button-box .playbtn p {
     text-align: center;
     padding: 10px;
@@ -368,14 +373,41 @@ body .game-board .row2 .row2-right .button-box .playbtn p {
     display: none;
     justify-content: center;
     align-items: center;
-  }
-
-  /* 모달 콘텐츠 스타일 */
+  }  
+  
+  /* 모달 내용 */
   .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
+    background-color: white; /* 흰 배경 */
+    padding: 20px; /* 내용 안쪽 여백 */
+    border-radius: 10px; /* 둥근 모서리 */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 50%;
+    width: 50%; /* 모달의 고정 너비 */
+    text-align: center; /* 내용 중앙 정렬 */
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 15px; /* 제목과 내용 간 간격 */
+    color: #333; /* 제목 색상 */
+  }
+  
+  .modal-text {
+    font-size: 16px;
+    margin-bottom: 20px; /* 텍스트와 버튼 간 간격 */
+    color: #666; /* 텍스트 색상 */
+  }
+  
+  .close-btn {
+    background-color: #007bff; /* 버튼 배경색 */
+    color: white; /* 버튼 글자색 */
+    padding: 10px 20px; /* 버튼 안쪽 여백 */
+    border: none;
+    border-radius: 5px; /* 둥근 모서리 */
+    cursor: pointer;
+    font-size: 16px;
+    /* transition: background-color 0.3s ease; */
+  }
+  
+  .close-btn:hover {
+    background-color: #0056b3; /* 버튼 호버 시 색상 변화 */
   }

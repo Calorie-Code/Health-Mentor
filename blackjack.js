@@ -428,7 +428,7 @@ function standClickHandler (e) {
   while (dealerTotalSum < 17) {
     addCardDealer();     
   }
-  compareTotalSum(); //결과보기
+  setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
 }
 
 //랜덤카드 만들기
@@ -567,15 +567,18 @@ function compareTotalSum() {
     (dealerTotalSum > playerTotalSum && dealerTotalSum <= 21) ||
     playerTotalSum > 21
   ) {
+    openRoundModal();
     console.log("딜러 승");
     myCoin = myCoin - bettingChip;
   } else if (
     (dealerTotalSum < playerTotalSum && playerTotalSum <= 21) ||
     dealerTotalSum > 21
   ) {
+    openRoundModal();
     console.log("플레이어 승");
     myCoin = myCoin + bettingChip;
   } else {
+    openRoundModal();
     console.log("무승부");
   }
 
@@ -644,6 +647,46 @@ function openModal() {
   else{
     $modalText.textContent = `총 보유 코인 : ${myCoin}개로 상품 획득에 실패하였습니다.
      재도전을 원하신다면 링크를 공유해주세요!`
+  }
+
+  //모달 닫기 버튼 클릭 시 모달 닫기
+  $closeModalBtn.addEventListener('click', () => {
+    $modalOverlay.style.display = 'none';
+  });
+  // ESC 키로 모달 닫기
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      $modalOverlay.style.display = 'none';
+    }
+  });
+
+  // 모달 외부 클릭 시 모달 닫기
+  $modalOverlay.addEventListener('click', (event) => {
+    if (event.target === $modalOverlay) {
+      $modalOverlay.style.display = 'none';
+    }
+  });
+}
+
+//라운드 종료 모달
+function openRoundModal() {   
+  $modalOverlay.style.display = 'flex'; 
+  
+  if (
+    (dealerTotalSum > playerTotalSum && dealerTotalSum <= 21) ||
+    playerTotalSum > 21
+  ) {
+    console.log("딜러 승");
+    $modalText.textContent = `패배하셨습니다. 딜러 카드 합 : ${dealerTotalSum} > 플레이어 카드 합 : ${playerTotalSum} || 베팅코인 ${bettingChip}개를 잃었습니다.`
+  } else if (
+    (dealerTotalSum < playerTotalSum && playerTotalSum <= 21) ||
+    dealerTotalSum > 21
+  ) {
+    console.log("플레이어 승");
+    $modalText.textContent = `승리하셨습니다. 딜러 카드 합 : ${dealerTotalSum} < 플레이어 카드 합 : ${playerTotalSum} || 베팅코인 ${bettingChip}개를 획득합니다.`
+  } else {
+    console.log("무승부");
+    $modalText.textContent = `무승부입니다. 딜러 카드 합 : ${dealerTotalSum} = 플레이어 카드 합 : ${playerTotalSum} || 베팅코인 ${bettingChip}개를 다시 돌려받습니다.`
   }
 
   //모달 닫기 버튼 클릭 시 모달 닫기
