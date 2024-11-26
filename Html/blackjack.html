@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/blackjack.css">
+    <script src="../javascript/blackjack.js" defer></script>
+  </head>
+  <body>
+
+
+    <header class="top">
+      <div class="logo">
+        <h1 class="title">Blackjack</h1>
+        <div class="logo-img"><img src="../img/blackjack/favicon.ico" alt=""></div>
+      </div>
+      <div class="exit-button"></div>
+    </header>
+
+
+    <section class="game-board">
+      
+      <div class="row1"> 
+        <div class="row1-left">
+          <span class="game-player">Dealer</span>
+          <div class="row1-card-box setCard-box">
+            <div class="hidden-card card">
+              <img src="../img/blackjack/card_back.png" alt="">
+            </div>
+            <div class="dealer-card card spreadCard">
+              <!-- <img src="img/Clubs-7.png" alt=""> -->
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row1-right">
+
+          <div class="betting-box">
+            <div class="betting-chip-img">
+              <img src="../img/blackjack/blank-chip.png" alt="">
+            </div>
+            <p class="betting-chip"></p>
+          </div>
+
+          <div class="gamechip-box">
+            <div class="gamechip-img">
+              <img src="../img/blackjack/pile-chip.png" alt="">
+            </div>
+            <p class="mygamechip"></p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row2">
+        <div class="row2-left">
+          <span class="game-player">Player</span>
+          <div class="row2-card-box setCard-box">
+            <div class="player-card card spreadCard">
+              <!-- <img src="img/Clubs-7.png" alt=""> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="row2-right">
+          <div class="button-box">
+            <div class="hit-button playbtn"><p>Hit</p></div>
+            <div class="double-button playbtn"><p>Double</p></div>
+            <div class="stand-button playbtn"><p>Stand</p></div>
+            <div class="split-button playbtn"><p>Split</p></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 모달 창 구조 -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <h2>게임 종료</h2>
+      <p class="modal-text"></p>
+      <button class="close-btn">닫기</button>
+    </div>
+  </div>
+
+  </body>
+</html>
