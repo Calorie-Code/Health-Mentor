@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Mentor | 명상 음악 추천 </title>
+    <link rel="icon" href="/img/favicon.png" />
+    <style>
+      @import url(../CSS/reset.css);
+
+      /* footer */
+      .menu-bar {
+        position: absolute;
+        top: 20px; 
+        left: 0; 
+        padding-left: 10px;   
+      }
+
+      /* '메인으로 돌아가기' 버튼 스타일 */
+      .back-to-main {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #52916e;
+        padding-left: 20px; 
+      }
+
+      .back-to-main:hover {
+        color: #437A5B;
+        scale: 1;
+        left: 0px;
+      }
+      
+
+      /* ======== 링크 ========= */
+      .link-tree-container {
+        width: 100wh;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      /* 버튼 */
+      .link-button {
+        background-color: #ff9800;
+        color: #ffffff;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        margin-bottom: 30px;
+        width: 300px;
+      }
+      /* 호버 효과 */
+      .link-button:hover {
+        background-color: #f57c00;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        transform: scale(1.05);
+      }
+      /* 클릭 효과 */
+      .link-button:active {
+        background-color: #e65100;
+        transform: scale(0.95);
+      }
+      /* ========= 모달 ======== */
+      
+      /* ===================== 모달 ================  */
+      /* 모달 오버레이 (배경) */
+      #modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4); 
+        display: flex;
+        justify-content: center; 
+        align-items: center;  
+        z-index: 1000; 
+        display: none;
+      }
+      #modal-overlay.show {
+        display: flex;
+      }
+
+      /* 모달 컨테이너 */
+      #modal-container {
+        background-color: #ffffff;
+        width: 800px; 
+        height: 700px;
+        border-radius: 40px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
+        padding: 20px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1001; /* 모달 컨텐츠가 오버레이 위로 표시되도록 설정 */
+      }
+      #modal-container.show {
+        display: flex;
+      }
+
+      /* 모달 클로즈 버튼 */
+      .modal-close-btn {
+        border: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #e65100 ;
+        cursor: pointer;
+        align-self: flex-end;  /* 오른쪽 상단에 위치하도록 */
+        margin-right: 10px;
+        margin-bottom: 20px;
+      }
+      
+      .modal-close-btn:hover {
+        color: #f57c00; 
+      }
+
+      /* 모달 비디오 컨테이너 */
+      .iframe-container {
+        width: 750px;
+        height: 600px;
+      }
+      /* 모달 비디오 */
+      .iframe-container iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px; 
+      }
+            
+    
+    </style>
+  </head>
+  <body>
+    <!-- 메인으로 돌아 가기 -->
+    <footer class="menu-bar">
+      <a href="../index.html" class="back-to-main"><i class="fa-solid fa-arrow-left"></i> 메인으로 돌아가기</a> 
+    </footer>
+    <!--  링크트리 -->
+    <div class="link-tree-container">
+      <div class="link-tree first">
+        <button class="link-button first" data-video="video1">링크 버튼1</button>
+      </div>
+      <div class="link-tree second">
+        <button class="link-button second" data-video="video2">링크 버튼 2</button>
+      </div>
+      <div class="link-tree third">
+        <button class="link-button third" data-video="video3">링크 버튼 3</button>
+      </div>
+      <div class="link-tree fourth">
+        <button class="link-button fourth" data-video="video4">링크 버튼4</button>
+      </div>
+     </div>
+    </div>
+
+     <!-- 모달 --> 
+     <div id="modal-overlay">
+      <div id="modal-container">
+        <i class="fa-solid fa-xmark modal-close-btn"></i> <!-- 클로즈 버튼 -->
+        <div class="iframe-container">
+        </div>
+      </div>
+     </div>
+
+
+  
+  </body>
+
+  <script>
+    const $linkTreeBtn = document.querySelectorAll('.link-button');
+    const $modalOverlay = document.getElementById('modal-overlay');
+    const $modalContainer = document.getElementById('modal-container');
+    const $modalCloseBtn = document.querySelector('.modal-close-btn');
+
+    // ===== 이벤트 리스너 등록 ====
+    // 링크 버튼 클릭하면 모달 띄우기
+    console.log($linkTreeBtn);
+    $linkTreeBtn.forEach($btn => $btn.addEventListener('click', modalDisplayHandler));
+    // 모달 띄운 상태에서 x 누르면 모달 없애기
+    $modalCloseBtn.addEventListener('click', modalCloseHandler);
+    // 모달 띄운 상태에서 esc 누르면 모달 없애기
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      modalCloseHandler();
+    });
+
+      // ===== 이벤트 핸들러 함수 =====
+    //  모달 띄우기
+    function modalDisplayHandler(e) {
+      // 모달 숨기기 해제
+      $modalOverlay.classList.add('show');
+      $modalContainer.classList.add('show');
+      // 동영상 주소 
+      const videos = {
+        video1: `<iframe id="modal-video" src="https://www.youtube.com/embed/Llour2YvsiI" 
+                  title="[Playlist] 아무 생각하기 싫을 때 가만히 듣기 좋은 잔잔한 재즈 | Cozy Jazz | Relaxing Background Music" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        video2: `<iframe src="https://www.youtube.com/embed/pA2Cim-baVg" title="[236]  턴테이블에서 흘러나오는 포근한 LP감성의 챔버 재즈 플레이리스트 𝐉𝐚𝐳𝐳 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭💿 공부, 책 읽을 때 듣기 좋은 재즈 Soft &amp; Relaxing Jazz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        video3: `<iframe id="modal-video" src="https://www.youtube.com/embed/Llour2YvsiI" 
+                  title="[Playlist] 아무 생각하기 싫을 때 가만히 듣기 좋은 잔잔한 재즈 | Cozy Jazz | Relaxing Background Music" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        video4: `<iframe id="modal-video" src="https://www.youtube.com/embed/Llour2YvsiI" 
+                  title="[Playlist] 아무 생각하기 싫을 때 가만히 듣기 좋은 잔잔한 재즈 | Cozy Jazz | Relaxing Background Music" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+      };
+      // 비디오 선택
+      //   1. 클릭한 버튼의 data-video 값 가져오기
+      const selectedVideoKey = e.target.getAttribute('data-video');
+      //   2. 비디오 url 가져오기
+      const selectedVideo = videos[selectedVideoKey];
+      // 동영상 띄우기
+      const $iframeContainer = document.querySelector('.iframe-container');
+      $iframeContainer.innerHTML = selectedVideo;
+    }
+    // 모달 닫기
+    function modalCloseHandler(e) {
+      $modalOverlay.classList.remove('show');
+      $modalContainer.classList.remove('show');
+    }
+  </script>
+</html>
