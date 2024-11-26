@@ -352,7 +352,7 @@ function hitClickHandler(e) {
     $hit.removeEventListener("click", hitClickHandler);
     $double.removeEventListener("click", doubleClickHandler);
     $stand.removeEventListener("click", standClickHandler);
-    setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
+    setTimeout(compareTotalSum, 1500); // 게임 결과를 비교하고 종료
     return; // 딜러의 카드를 추가하지 않음
   }
 
@@ -367,7 +367,7 @@ function hitClickHandler(e) {
     $hit.removeEventListener("click", hitClickHandler);
     $double.removeEventListener("click", doubleClickHandler);
     $stand.removeEventListener("click", standClickHandler);
-    setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
+    setTimeout(compareTotalSum, 1500); // 게임 결과를 비교하고 종료
     return; // 딜러의 카드를 추가하지 않음
   }
 }
@@ -387,7 +387,7 @@ function doubleClickHandler(e) {
     $hit.removeEventListener("click", hitClickHandler);
     $double.removeEventListener("click", doubleClickHandler);
     $stand.removeEventListener("click", standClickHandler);
-    setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
+    setTimeout(compareTotalSum, 1500); // 게임 결과를 비교하고 종료
     return; // 딜러의 카드를 추가하지 않음
   }
 
@@ -401,7 +401,7 @@ function doubleClickHandler(e) {
     $hit.removeEventListener("click", hitClickHandler);
     $double.removeEventListener("click", doubleClickHandler);
     $stand.removeEventListener("click", standClickHandler);
-    setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
+    setTimeout(compareTotalSum, 1500); // 게임 결과를 비교하고 종료
     return; // 딜러의 카드를 추가하지 않음
   }
   $double.removeEventListener("click", doubleClickHandler);
@@ -419,7 +419,7 @@ function standClickHandler(e) {
   while (dealerTotalSum < 17) {
     addCardDealer();
   }
-  setTimeout(compareTotalSum, 500); // 게임 결과를 비교하고 종료
+  setTimeout(compareTotalSum, 1000); // 게임 결과를 비교하고 종료
 }
 
 //랜덤카드 만들기
@@ -517,7 +517,7 @@ function startTabel() {
         $hit.removeEventListener("click", hitClickHandler);
         $double.removeEventListener("click", doubleClickHandler);
         $stand.removeEventListener("click", standClickHandler);
-        setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
+        setTimeout(compareTotalSum, 1500); // 게임 결과를 비교하고 종료
         return; // 딜러의 카드를 추가하지 않음
       }
     } else {
@@ -532,7 +532,7 @@ function startTabel() {
         $hit.removeEventListener("click", hitClickHandler);
         $double.removeEventListener("click", doubleClickHandler);
         $stand.removeEventListener("click", standClickHandler);
-        setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
+        setTimeout(compareTotalSum, 1500); // 게임 결과를 비교하고 종료
         return; // 딜러의 카드를 추가하지 않는다
       }
     }
@@ -566,7 +566,7 @@ function compareTotalSum() {
   console.log(newCardArr);
 
   //*다음판을 위한 초기화
-  setTimeout(resetGame, 2000);
+  setTimeout(resetGame, 1500);
 }
 
 //베팅설정
