@@ -115,7 +115,7 @@ div#menu-container {
   background: #437A5B;
 } 
 
-#menu-container .menu-box#my-plan .menu-icon {
+#menu-container .menu-box#meditation .menu-icon {
   background: #B4CD93;
 } 
 
@@ -130,8 +130,8 @@ div#menu-container {
   cursor: url('/img/index/food-nutrition-cursor.png') 16 16, auto;
 } 
 
-#menu-container .menu-box#my-plan .menu-icon,
-#menu-container .menu-box#my-plan .menu-description {
+#menu-container .menu-box#meditation .menu-icon,
+#menu-container .menu-box#meditation .menu-description {
   cursor: url('/img/index/my-plan-cursor.png') 16 16, auto;
 } 
 
