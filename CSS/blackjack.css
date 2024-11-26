@@ -1,4 +1,4 @@
-body { 
+body {
   background: #437a5b;
   display: flex;
   flex-direction: column;
@@ -6,7 +6,21 @@ body {
   align-items: center;
 }
 
-body .card {  
+body .player-right-hand {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  /* 박스에 이미지 바로 넣기 */
+  background: url("../img/blackjack/player-right-hand.png") no-repeat center/
+    cover;
+  pointer-events: none; /* 이미지가 다른 요소의 클릭을 방해하지 않도록 */
+  z-index: 10;
+}
+html:hover .player-right-hand {
+  transform: scale(1.5) translate(50px, 50px);
+}
+
+body .card {
   height: 220px;
   margin-top: 10px;
 }
@@ -15,7 +29,7 @@ body .card img {
   height: 100%;
 }
 
-body .top {  
+body .top {
   background: rgb(12, 12, 12);
   width: 100%;
   display: flex;
@@ -53,11 +67,11 @@ body .game-board {
   position: relative;
 }
 body .chipimg {
-    position: absolute;
-    width: 400px;
+  position: absolute;
+  width: 400px;
 }
 body .chipimg img {
-    width: 100%;
+  width: 100%;
 }
 
 body .hand {
@@ -72,11 +86,6 @@ body .hand img {
 body .player-left-hand {
   bottom: -160px;
   left: 300px;
-}
-
-body .player-right-hand {
-  bottom: -160px;
-  right: 300px;
 }
 
 body .dealer-left-hand {
@@ -218,7 +227,7 @@ body .game-board .row1 .row1-right .gamechip-box {
   justify-content: center;
   align-items: center;
 }
-body .game-board .row1 .row1-right .gamechip-box .gamechip-img {  
+body .game-board .row1 .row1-right .gamechip-box .gamechip-img {
   width: 100px;
   margin-bottom: 5px;
   margin-top: 100px;
@@ -228,7 +237,7 @@ body .game-board .row1 .row1-right .gamechip-box .gamechip-img img {
 }
 
 body .game-board .row2 {
-  width: 100%;  
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -257,7 +266,7 @@ body .game-board .row2 .row2-right .button-box {
 
 body .game-board .row2 .row2-right .button-box .playbtn {
   /* 이미지에 가려져서 버튼이 안눌림 -> z-index설정해서 해결 */
-  z-index: 10;  
+  z-index: 10;
   width: 40%;
   margin: 4px;
   background: rgb(18, 61, 28);
@@ -419,7 +428,7 @@ h2 {
   border: none;
   border-radius: 5px; /* 둥근 모서리 */
   cursor: pointer;
-  font-size: 16px;  
+  font-size: 16px;
 }
 
 .close-btn:hover {

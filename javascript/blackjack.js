@@ -550,18 +550,18 @@ function compareTotalSum() {
     playerTotalSum > 21
   ) {
     openRoundModal();
-    console.log("딜러 승");
+    // console.log("딜러 승");
     myCoin = myCoin - bettingChip;
   } else if (
     (dealerTotalSum < playerTotalSum && playerTotalSum <= 21) ||
     dealerTotalSum > 21
   ) {
     openRoundModal();
-    console.log("플레이어 승");
+    // console.log("플레이어 승");
     myCoin = myCoin + bettingChip;
   } else {
     openRoundModal();
-    console.log("무승부");
+    // console.log("무승부");
   }
   console.log(newCardArr);
 
@@ -649,16 +649,13 @@ function openRoundModal() {
     (dealerTotalSum > playerTotalSum && dealerTotalSum <= 21) ||
     playerTotalSum > 21
   ) {
-    console.log("딜러 승");
     $modalText.textContent = `패배하셨습니다. 딜러 카드 합 : ${dealerTotalSum} > 플레이어 카드 합 : ${playerTotalSum} || 베팅코인 ${bettingChip}개를 잃었습니다.`;
   } else if (
     (dealerTotalSum < playerTotalSum && playerTotalSum <= 21) ||
     dealerTotalSum > 21
   ) {
-    console.log("플레이어 승");
     $modalText.textContent = `승리하셨습니다. 딜러 카드 합 : ${dealerTotalSum} < 플레이어 카드 합 : ${playerTotalSum} || 베팅코인 ${bettingChip}개를 획득합니다.`;
   } else {
-    console.log("무승부");
     $modalText.textContent = `무승부입니다. 딜러 카드 합 : ${dealerTotalSum} = 플레이어 카드 합 : ${playerTotalSum} || 베팅코인 ${bettingChip}개를 다시 돌려받습니다.`;
   }
 
@@ -680,5 +677,18 @@ function openRoundModal() {
     }
   });
 }
+
+// 마우스의 움직임을 추적하는 함수
+const $handBox = document.getElementById("handToMouse");
+
+document.addEventListener("mousemove", function (e) {
+  // 마우스 좌표 얻기
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+
+  // 이미지 박스를 마우스 위치로 이동
+  $handBox.style.left = mouseX - 65 + "px";
+  $handBox.style.top = mouseY - 90 + "px";
+});
 
 startGame();
