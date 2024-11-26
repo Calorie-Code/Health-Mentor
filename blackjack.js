@@ -428,7 +428,7 @@ function standClickHandler (e) {
   while (dealerTotalSum < 17) {
     addCardDealer();     
   }
-  setTimeout(compareTotalSum, 2000); // 게임 결과를 비교하고 종료
+  setTimeout(compareTotalSum,500); // 게임 결과를 비교하고 종료
 }
 
 //랜덤카드 만들기
