@@ -265,8 +265,8 @@ body .game-board .row2 .row2-right .button-box {
 }
 
 body .game-board .row2 .row2-right .button-box .playbtn {
-  /* 이미지에 가려져서 버튼이 안눌림 -> z-index설정해서 해결 */
-  z-index: 10;
+  /* 이미지에 가려져서 버튼이 안눌림 -> z-index설정해서 해결
+  z-index: 10; */
   width: 40%;
   margin: 4px;
   background: rgb(18, 61, 28);
