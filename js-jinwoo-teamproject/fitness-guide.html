@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="fitness-guide.css">
-    <link rel="stylesheet" href="fitness-guide.js">
 </head>
 <body>
     <div class="container">
@@ -64,6 +63,8 @@
             </div>
         
         <!-- <hr> -->
+        
+
             <!-- =========== 두 번째 페이지: 맞춤 운동 선택 =========== -->
             <h2 class="h2-2">맞춤 운동 선택</h2>
             <div class="choose-exercise">
@@ -638,5 +639,28 @@
         <!-- ====================  bottom  ==================== -->
         
     </div>
+    <!-- 모달창 -->
+<!-- 모달창 구조 -->
+<div class="modal-container">
+    <div class="modal">
+        <!-- 닫기 버튼 -->
+        <button class="modal-close-btn">X</button>
+        <!-- YouTube 영상 -->
+        <div class="modal-video">
+            <iframe 
+                class="youtube-frame" 
+                width="560" 
+                height="315" 
+                src="" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+    <script src="fitness-guide.js"></script>
+
 </body>
 </html>
