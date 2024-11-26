@@ -1,0 +1,403 @@
+/* ================== 공통정보 ================== */
+/* reset */
+@import url("https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css");
+/* font awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
+
+* {
+  box-sizing: border-box;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  margin: 0;
+  padding: 0;
+}
+/*================================================*/
+body {
+  /* background: #706f6f; */
+  background-image: ;
+}
+.headerbgimg {
+  width: 100%;
+  /* border: 1px solid red; */
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: #3f3f3f; */
+
+}
+.header {
+  background-image: url(./fitness-guide-img/headerbg-3.png);
+  height: 600px;
+  width: 1200px;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.headerspan-1 {
+  font-size: 25px;
+  color: #ffffff;
+  /* border: 1px solid #000; */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: px;
+  margin-bottom: 20px;
+  padding-top: 200px;
+  letter-spacing: 2px;
+}
+.headerspan-2 {
+  font-size: 25px;
+  color: #ffffff;
+  /* border: 1px solid #000; */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+.container {}
+.main-container {
+  background: rgb(255, 255, 255);
+  width: 1200px;   /* 흰색화면 가로넓이 */
+  margin: auto;
+}
+h1 {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 80px;
+  /* border: 1px solid #000; */
+  display: flex;
+  justify-content: center;
+  letter-spacing: 5px;
+
+}
+h2 {
+  font-size: 30px;
+  font-weight: normal;
+  /* border: 1px solid #000; */
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #3f3f3f;
+}
+h3 {
+  font-size: 26px;
+  font-weight: normal;
+  /* border: 1px solid #000; */
+  /* margin-bottom: 20px; */
+  margin-top: 40px;
+  padding: 10px;
+  
+  font-weight: bold;
+  color: #3f3f3f;
+}
+.h2-1 {
+  background: #dee2e6;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.h2-2 {
+  background: #d3e2ef;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.h2-3 {
+  background: #bccbd8;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+
+/*=========================첫번째 페이지=======================*/
+
+.main-container .user-info {
+  /* border: 4px solid purple; */
+  height: 800px;
+  font-size: 23px;
+  
+  }
+.user-info .user-info-gender, .user-info-age, .user-info-height, .user-info-weight
+.user-info .label{
+  padding: 10px;
+}
+.main-container .user-info .user-info-genderage {
+  display: flex;
+  margin-bottom: 10px;
+}
+.main-container .user-info .user-info-heightweightbmi {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+/*========== 성별 입력 ========== */
+.main-container .user-info .user-info-gender {
+  border: 4px solid red;
+  margin-right: 20px;
+}
+
+/*========== 나이 입력 ========== */
+.main-container .user-info .user-info-age {
+  border: 4px solid blue;
+}
+
+/*========== 신장 입력 ========== */
+.main-container .user-info .user-info-height {
+  border: 4px solid yellow;
+  margin-right: 20px;
+}
+
+/*========== 몸무게 입력 ========== */
+.main-container .user-info .user-info-weight {
+  border: 4px solid pink;
+}
+
+/*========== bmi 산출 ========== */
+.main-container .user-info .bmi {
+  margin-bottom: 10px;
+}
+.main-container .user-info .user-info-bmi {
+  border: 4px solid brown;
+}
+.user-info input,select {
+  width: 200px;
+  font-size: 18px;
+  height: 30px;
+}
+
+.main-container .user-info .bmiimg {
+  width: 700px;
+}
+
+
+
+
+
+
+/*=========================두번째 페이지=======================*/
+.choose-exercise .exercise-card {
+  border: 3px solid #bebebe;
+  width: 250px;
+  margin: 10px;
+  border-radius: 5px;
+
+  cursor: pointer; /* 마우스 포인터 변경 */
+}
+.choose-exercise .exercise-card div {
+  /* border: 1px solid red; */
+  font-size: 18px;
+  color: #3f3f3f;
+  font-weight: 500;
+  cursor: pointer; /* 마우스 포인터 변경 */
+  text-align: center;
+  vertical-align: middle;
+}
+
+.choose-exercise .exercise-card .exercise-card-1 {
+  display: flex;
+  /* justify-items: center; */
+  align-items: center;
+  /* border: 1px solid purple; */
+  padding: 8px;
+
+}
+
+.choose-exercise img {
+  height: 150px;  /* 사진 크기 설정 */
+  width: 100%;
+  /* margin-top: 10px; */
+  cursor: pointer; /* 마우스 포인터 변경 */
+  border-top: 1px solid #bebebe;
+  border-bottom: 1px solid #bebebe;
+}
+.exercise-card .exercise-card-1:hover div,
+.exercise-card img:hover + label .exercise-card-1 div {
+    font-weight: bold; /* 글자 굵게 */
+    text-decoration: underline; /* 밑줄 추가 */
+    transition: all 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.exercise-card img:hover,
+.exercise-card-1:hover {
+    background-color: #f0f0f0; /* 이미지 배경 또는 클릭 위치로 변경할 수 있음*/
+}
+
+
+.choose-exercise .exercise-card button {
+  background-color: white; /* 기본 배경색 */
+  color: black; /* 기본 텍스트 색상 */
+  border: none; /* 버튼 테두리 제거 */
+  padding: 10px 20px; /* 버튼 여백 */
+  font-size: 16px; /* 글자 크기 */
+  cursor: pointer; /* 마우스 포인터 변경 */
+  transition: all 0.3s ease; /* 부드러운 전환 효과 */
+  width: 240px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.choose-exercise .exercise-card button:hover {
+  background-color: #cccccc; /* 호버 시 배경색 회색 */
+  text-decoration: underline; /* 호버 시 글자 밑줄 */
+  color: black; /* 텍스트 색상 유지 */
+  font-weight: bold;
+}
+
+
+.choose-exercise .aerobic-exercise {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.choose-exercise .anaerobic-exercise-1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.choose-exercise .anaerobic-exercise-2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.choose-exercise .anaerobic-exercise-3 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* ========== 체크박스 설정 ========== */
+input[type="checkbox"] {
+  width: 20px; /* 너비 */
+  height: 20px; /* 높이 */
+  background-color: #f9f9f9; /* 배경색 */
+  border: 2px solid #ccc; /* 테두리 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  appearance: none; /* 기본 체크박스 스타일 제거 */
+  cursor: pointer; /* 마우스 포인터 변경 */
+}
+
+input[type="checkbox"]:checked {
+  background-color: #706f6f; /* 체크된 상태의 배경색 */
+  border-color: #3f3f3f; /* 테두리 색상 */
+  position: relative;
+}
+
+input[type="checkbox"]:checked::after {
+  color: #fff; /* 체크 표시 색상 */
+  font-size: 16px;
+  position: absolute;
+  top: 2px;
+  left: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.exercise-schedule {
+  border: 1px solid #000;
+  height: 1000px;
+}
+.exercise-schedule- {
+  border: 1px solid #000;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #3f3f3f;
+}
+
+
+
+
+
+
+
+
+
+footer, header {
+  background: #43454B;
+}
+#footer {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+.footerbgtext {
+  width: 600px;
+  /* border: 1px solid yellow; */
+  height: 500px;
+  color: #ffffff;
+  /* display: flex; */
+  font-size: 30px;
+}
+.footerbgtext-1 {
+  font-size: 1.8em;
+  /* border: 1px solid yellowgreen; */
+  padding: 10px;
+  padding-top: 50px;
+}
+.footerbgtext-2 {
+  /* border: 1px solid blue; */
+  padding: 10px;
+  font-size: 0.7em;
+  color: #e6e3e3;
+  padding-top: 40px;
+}
+.footerbgtext-3 {
+  /* border: 1px solid red; */
+  padding: 10px;
+  font-size: 0.7em;
+  color: #e6e3e3;
+  padding-top: 20px;
+}
+.footerbgimg {
+  /* border: 1px solid red; */
+  background: #43454B;
+  width: 600px;
+  height: 500px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: flex-end; 
+  flex-direction: column;
+}
+
+.footerimg-1 {
+  margin-top: 20px;
+}
+
+
+
+.footerimg-1, .footerimg-2, .footerimg-3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 150px;
+  width: 100%;
+  /* border: 1px solid blue; */
+  padding: 20px;
+  
+}
+.footerimg-1 img, .footerimg-2 img, .footerimg-3 img {
+  /* border: 1px solid #000; */
+  margin-left: 10xp;
+  height: 70px;
+  
+}

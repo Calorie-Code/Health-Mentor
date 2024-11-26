@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="fitness-guide.css">
+    <link rel="stylesheet" href="fitness-guide.js">
+</head>
+<body>
+    <div class="container">
+        <div class="headerbgimg">
+            <div class="header">
+                <p><span class="headerspan-1">★ Health Mentor ★</span></p>
+                <h1>CUSTOM EXERCISE</h1>
+                <p><span class="headerspan-2">★★</span></p>
+            </div>
+        </div>
+        <div class="main-container">
+            <!-- <div class="headerbgimg">
+                <div class="header">
+                    <p><span class="headerspan-1">★ Health Mentor ★</span></p>
+                    <h1>CUSTOM EXERCISE</h1>
+                    <p><span class="headerspan-2">★★</span></p>
+                </div>
+            </div> -->
+            <!-- =========== 첫 번째 페이지: 사용자 정보 입력 =========== -->
+            <div class="user-info">
+            <!-- === 성별 입력 ===  -->
+            <h2 class="h2-1">사용자 정보 입력</h2>
+                <div class="user-info-genderage">
+                    <div class="user-info-gender">
+                        <label for="gender">성별:</label>
+                        <select>
+                            <option value="male">남성</option>
+                            <option value="female">여성</option>
+                            <option value="???">기타</option>
+                        </select>
+                    </div>
+            <!-- === 나이 입력 ===  -->
+                    <div class="user-info-age">
+                        <label for="age">나이:</label>
+                        <input type="number" placeholder="나이 입력">
+                    </div>
+                </div>
+            <!-- === 신장 입력 ===  -->
+                <div class="user-info-heightweightbmi">
+                    <div class="user-info-height">
+                        <label for="height">신장:</label>
+                        <input type="number" placeholder="신장 입력(cm)">
+                    </div>
+            <!-- === 몸무게 입력 ===  -->
+                    <div class="user-info-weight">
+                        <label for="weight">몸무게:</label>
+                        <input type="number" placeholder="몸무게 입력(kg)">
+                    </div>
+                </div>        
+                    <div class="user-info-summary">
+                        <p>성별: <span id="summary-gender">미입력</span></p>
+                        <p>나이: <span id="summary-age">미입력</span></p>
+                        <p>신장: <span id="summary-height">미입력</span> cm</p>
+                        <p>몸무게: <span id="summary-weight">미입력</span> kg</p>
+                    </div>
+            </div>
+        
+        <!-- <hr> -->
+            <!-- =========== 두 번째 페이지: 맞춤 운동 선택 =========== -->
+            <h2 class="h2-2">맞춤 운동 선택</h2>
+            <div class="choose-exercise">
+                <h3>유산소운동</h3>
+                <div class="aerobic-exercise">
+                    <!-- ===== 유산소 운동 ===== -->
+                    <div class="exercise-card">
+                        <label>
+                            <div class="exercise-card-1">
+                                <input type="checkbox">
+                                <div>걷기</div>
+                            </div>
+                            <img src="./fitness-guide-img/걷기.jpeg" alt="걷기 이미지">
+                        </label>
+                    </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>등산</div>
+                                </div>
+                                <img src="./fitness-guide-img/등산.jpg" alt="등산 이미지">
+                            </label>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>달리기</div>
+                                </div>
+                                <img src="./fitness-guide-img/달리기.png" alt="달리기 이미지">
+                            </label>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>수영</div>
+                                </div>
+                                <img src="./fitness-guide-img/수영.jpg" alt="수영 이미지">
+                            </label>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>자전거 타기</div>
+                                </div>
+                                <img src="./fitness-guide-img/자전거.jpg" alt="자전거 이미지">
+                            </label>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>줄넘기</div>
+                                </div>
+                                <img src="./fitness-guide-img/줄넘기.jpeg" alt="줄넘기 이미지">
+                            </label>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>축구</div>
+                                </div>
+                                <img src="./fitness-guide-img/축구.jpg" alt="축구 이미지">
+                            </label>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>농구</div>
+                                </div>
+                                <img src="./fitness-guide-img/농구.jpg" alt="농구 이미지">
+                            </label>
+                    </div>
+        
+                    </div>
+                <!-- ===== 맨몸 운동 ===== -->
+                 <h3>맨몸 운동</h3>
+                <div class="anaerobic-exercise-1">
+                    <div class="exercise-card">
+                        <label>
+                            <div class="exercise-card-1">
+                                <input type="checkbox">
+                                <div>푸쉬업</div>
+                            </div>
+                            <img src="./fitness-guide-img/푸쉬업.jpg" alt="푸쉬업 이미지">
+                        </label>
+                        <button>운동영상보기</button>
+                    </div>
+                    <div class="exercise-card">
+                        <label>
+                            <div class="exercise-card-1">
+                                <input type="checkbox">
+                                <div>딥스</div>
+                            </div>
+                            <img src="./fitness-guide-img/딥스.jpg" alt="딥스 이미지">
+                        </label>
+                        <button>운동영상보기</button>
+                    </div>
+                    <div class="exercise-card">
+                        <label>
+                            <div class="exercise-card-1">
+                                <input type="checkbox">
+                                <div>턱걸이</div>
+                            </div>
+                            <img src="./fitness-guide-img/턱걸이.jpeg" alt="턱걸이 이미지">
+                        </label>
+                        <button>운동영상보기</button>
+                    </div>
+                    <div class="exercise-card">
+                        <label>
+                            <div class="exercise-card-1">
+                                <input type="checkbox">
+                                <div>스쿼트</div>
+                            </div>
+                            <img src="./fitness-guide-img/스쿼트.jpg" alt="스쿼트 이미지">
+                        </label>
+                        <button>운동영상보기</button>
+                    </div>
+                    <div class="exercise-card">
+                        <label>
+                            <div class="exercise-card-1">
+                                <input type="checkbox">
+                                <div>런지</div>
+                            </div>
+                            <img src="./fitness-guide-img/런지.jpg" alt="런지 이미지">
+                        </label>
+                        <button>운동영상보기</button>
+                    </div>
+                    <div class="exercise-card">
+                        <label>
+                            <div class="exercise-card-1">
+                                <input type="checkbox">
+                                <div>윗몸일으키기</div>
+                            </div>
+                            <img src="./fitness-guide-img/윗몸일으키기.jpg" alt="윗몸일으키기 이미지">
+                        </label>
+                        <button>운동영상보기</button>
+                    </div>
+                    <div class="exercise-card">
+                        <label>
+                            <div class="exercise-card-1">
+                                <input type="checkbox">
+                                <div>크런치</div>
+                            </div>
+                            <img src="./fitness-guide-img/크런치.jpg" alt="크런치 이미지">
+                        </label>
+                        <button>운동영상보기</button>
+                    </div>
+                    <div class="exercise-card">
+                        <label>
+                            <div class="exercise-card-1">
+                                <input type="checkbox">
+                                <div>AB 롤아웃</div>
+                            </div>
+                            <img src="./fitness-guide-img/ab롤아웃.jpg" alt="ab롤아웃 이미지">
+                        </label>
+                        <button>운동영상보기</button>
+                    </div>
+                    <div class="exercise-card">
+                        <label>
+                            <div class="exercise-card-1">
+                                <input type="checkbox">
+                                <div>플랭크</div>
+                            </div>
+                            <img src="./fitness-guide-img/플랭크.jpg" alt="플랭크 이미지">
+                        </label>
+                        <button>운동영상보기</button>
+                    </div>
+                    <div class="exercise-card">
+                        <label>
+                            <div class="exercise-card-1">
+                                <input type="checkbox">
+                                <div>브리지</div>
+                            </div>
+                            <img src="./fitness-guide-img/브리지.jpeg" alt="브리지 이미지">
+                        </label>
+                        <button>운동영상보기</button>
+                    </div>
+                </div>
+        
+                <h3>도구 운동</h3>
+                    <!-- === 도구 운동 === -->
+                    <div class="anaerobic-exercise-2">
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>데드리프트</div>
+                                </div>
+                                <img src="./fitness-guide-img/데드리프트.jpg" alt="데드리프트 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>스쿼트</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구스쿼트.jpg" alt="스쿼트 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>벤치프레스</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구벤치프레스.jpg" alt="벤치프레스 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>풀오버</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구풀오버.jpg" alt="풀오버 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>플라이</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구플라이.jpg" alt="플라이 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>슈러그</div>
+                                </div>
+                                <img src="./fitness-guide-img/덤벨슈러그.jpg" alt="슈러그 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>업라이트 로우</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구업라이트로우.jpg" alt="업라이트 로우 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>덤벨 로우</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구덤벨로우.jpg" alt="바벨 로우 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>런지</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구런지.avif" alt="런지 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>래터럴 레이즈</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구래터럴레이즈.jpg" alt="래터럴 레이즈 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>프레스</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구프레스.jpg" alt="프레스 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>라잉 트라이셉스 익스텐션</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구라잉트라이셉스익스텐션.jpg" alt="라잉 트라이셉스 익스텐션 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>리스트 컬</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구리스트컬.jpg" alt="리스트 컬 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>덤벨 사이드 벤드</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구덤벨사이드벤드.jpg" alt="덤벨 사이드 벤드 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>힙 쓰러스트</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구힙쓰러스트.jpg" alt="힙 쓰러스트 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>카프 레이즈</div>
+                                </div>
+                                <img src="./fitness-guide-img/도구카프 레이즈.jpg" alt="카프 레이즈 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                    </div>        
+        
+                    <!-- === 기구 운동 === -->
+                    <h3>기구 운동</h3>
+                    <div class="anaerobic-exercise-3">
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>스쿼트</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구스쿼트.png" alt="스쿼트 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>체스트프레스</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구체스트프레스.jpg" alt="체스트프레스 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>기구 체스트 플라이</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구체스트플라이.jpg" alt="버터플라이 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>케이블크로스오버</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구케이블크로스오버.jpg" alt="케이블크로스오버 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>시티드케이블로우</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구시티드케이블로우.jpg" alt="시티드케이블로우 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>랫 풀 다운</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구랫풀다운.jpg" alt="랫 풀 다운 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>스트레이트 암 풀 다운</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구스트레이트암풀다운.png" alt="스트레이트 암 풀 다운 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>레그 프레스</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구레그프레스.png" alt="레그 프레스 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>레그 익스텐션</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구레그익스텐션.png" alt="레그 익스텐션 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>레그 컬</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구레그컬.avif" alt="레그 컬 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>바이셉스 컬</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구바이셉스컬.jpeg" alt="바이셉스 컬 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>트라이셉스 푸시 다운</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구트라이셉스푸시다운.jpg" alt="트라이셉스 푸시 다운 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>힙 쓰러스트</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구힙쓰러스트.jpg" alt="힙 쓰러스트 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>
+                        <div class="exercise-card">
+                            <label>
+                                <div class="exercise-card-1">
+                                    <input type="checkbox">
+                                    <div>카프 레이즈</div>
+                                </div>
+                                <img src="./fitness-guide-img/기구카프레이즈.png" alt="카프 레이즈 이미지">
+                            </label>
+                            <button>운동영상보기</button>
+                        </div>                               
+                    </div>
+        
+                </div>
+            
+        <!-- <hr> -->
+                <!-- =========== 다른 운동 카드 추가 =========== -->
+                <h2 class="h2-3">운동 계획 설정</h2>
+
+                <div class="exercise-schedule">
+                    <div class="exercise-schedule-">
+                        <label>운동 이름: </label>
+                        <input type="text">
+                    </div>
+        
+                    <div class="exercise-schedule-">
+                        <label>횟수: </label>
+                        <input type="number">
+                    </div>
+        
+                    <div class="exercise-schedule-">
+                        <label>세트: </label>
+                        <input type="number">
+                    </div>
+        
+                    <div class="exercise-schedule-">
+                        <label>시간 (분): </label>
+                        <input type="number">
+                    </div>
+        
+                    <div class="exercise-schedule-">
+                        <label>운동 기간 (주): </label>
+                        <input type="number">
+                    </div>
+        
+                    <div class="exercise-schedule-"><button>계획 저장</button></div>
+                </div>
+        
+        </div>
+        
+        <!-- <hr> -->
+        <footer id="footer">
+            <div class="footerbgtext">
+                <p class="footerbgtext-1">Discover Personalized Workouts Tailored Just for You.</p>
+                
+                <p class="footerbgtext-2">Fuel Your Passion, Achieve Your Goals.Join the Ultimate Fitness Community Start Today!</p>
+                <p class="footerbgtext-3">Track Progress, Find Motivation, and Transform Yourself Expert Tips, Inspiring Content, and Tools to Succeed.Your Fitness Journey Begins Here  Let's Make it Count.</p>
+            </div>
+            <div class="footerbgimg">
+                <div class="footerimg-1">
+                    <img src="./fitness-guide-footerimg/footer-나이키.png" alt="">
+                    <img src="./fitness-guide-footerimg/footer-노스페이스.png" alt="">
+                    <img src="./fitness-guide-footerimg/footer-뉴발란스 로고.png" alt="">
+                </div>
+                <div class="footerimg-2">
+                    <img src="./fitness-guide-footerimg/footer-아디다스.png" alt="">
+                    <img src="./fitness-guide-footerimg/footer-아식스.png" alt="">
+                    <img src="./fitness-guide-footerimg/footer-언더아머.png" alt="">
+                </div>
+                <div class="footerimg-3">
+                    <img src="./fitness-guide-footerimg/footer-파타고니아.png" alt="">
+                    <img src="./fitness-guide-footerimg/footer-푸마.png" alt="">
+                    <img src="./fitness-guide-footerimg/footer-칼하트.png" alt="">
+                </div>
+            </div>
+        </footer>
+            </div>
+        <!-- ====================  main  ==================== -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- ====================  -----  ==================== -->
+        <!-- ====================  bottom  ==================== -->
+        
+    </div>
+</body>
+</html>
