@@ -86,6 +86,7 @@ h2 {
   margin-top: 20px;
   font-weight: bold;
   color: #3f3f3f;
+  border-radius: 10px;
 }
 h3 {
   font-size: 21px;
@@ -117,28 +118,60 @@ h3 {
   padding-bottom: 20px;
 }
 
+/* 어디로든 문 ! */
+/* 맨 위로 가기 버튼 스타일 */
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #3f3f3f; /* 파란색 */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+.scroll-to-top-btn:hover {
+  background-color: #0056b3; /* 더 진한 파란색 */
+}
+
+.scroll-to-top-btn.show {
+  opacity: 1;
+  visibility: visible;
+}
 
 
 /*=========================첫번째 페이지=======================*/
 
 .main-container .user-info {
   /* border: 4px solid purple; */
-  height: 200px;
-  font-size: 18px;
+  height: 140px;
+  font-size: 16px;
   color: #3f3f3f;
   display: flex;
   }
 .user-info label {
   font-weight: 700;
   color: #3f3f3f;
+  font-size: 16px;
 }
 .user-info-1 {
-  border: 4px solid red;
+  /* border: 4px solid red; */
   width: 650px;
+  height: 140px;
 }
 .user-info-2 {
-  border: 4px solid blue;
+  /* border: 4px solid blue; */
   padding: 10px;
+  height: 140px;
   width: 350px;
 }
 .user-info .user-info-gender, .user-info-age, .user-info-height, .user-info-weight
@@ -147,24 +180,34 @@ h3 {
 }
 .user-info input {
   width: 150px;
-  
+  height: 40px;
+  margin-left: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+.user-info select {
+  width: 150px;
+  height: 40px;
+  margin-left: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
 }
 
 /* 성별, 나이 - 신장, 몸무게 세트  */
 .main-container .user-info .user-info-genderage {
   display: flex;
   margin-bottom: 10px;
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
 }
 .main-container .user-info .user-info-heightweightbmi {
   display: flex;
   margin-bottom: 10px;
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
 }
 
 /*========== 성별 입력 ========== */
 .main-container .user-info .user-info-gender {
-  border: 4px solid red;
+  /* border: 4px solid red; */
   margin-right: 20px;
   width: 300px;
   justify-content: flex-start;
@@ -174,7 +217,7 @@ h3 {
 
 /*========== 나이 입력 ========== */
 .main-container .user-info .user-info-age {
-  border: 4px solid blue;
+  /* border: 4px solid blue; */
   width: 300px;
   justify-content: flex-start;
   display: flex;
@@ -184,7 +227,7 @@ h3 {
 
 /*========== 신장 입력 ========== */
 .main-container .user-info .user-info-height {
-  border: 4px solid yellow;
+  /* border: 4px solid yellow; */
   margin-right: 20px;
   display: flex;
   align-items: center;
@@ -195,7 +238,7 @@ h3 {
 
 /*========== 몸무게 입력 ========== */
 .main-container .user-info .user-info-weight {
-  border: 4px solid pink;
+  /* border: 4px solid pink; */
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -206,26 +249,69 @@ h3 {
 /*========== bmi 산출 ========== */
 .bmi-result {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 16px;
   color: #3f3f3f;
   font-weight: bold;
 }
 .bmi-result-1 {
-  border: 1px solid #000;
-  padding-bottom: 10px;
+  /* border-bottom: 1px solid #000; */
+  padding-bottom: 15px;
+  /* border-bottom: #888888; */
 }
-#bmi-value {
-  font-weight: bold;
+/* #bmi-value {
+  font-weight: normal;
   color: #007BFF;
 }
 #bmi-status {
-  font-weight: bold;
-  color: #FF5722;
+  font-weight: normal;
+  color: #FF5722; 
+}*/
+/* 초기 BMI 결과 스타일 */
+#bmi-value,
+#bmi-status {
+  font-weight: normal;
+  color: #cccccc; /* 연한 회색 (초기 상태) */
 }
+
 #calculate-bmi {
   width: 270px;
   font-size: 20px;
   height: 40px;
+  border-radius: 5px;
+}
+#calculate-bmi {
+  background-color: #f0f0f0; /* 기본 연한 회색 */
+  color: #000; /* 기본 텍스트 색상 */
+  border: 1px solid #ccc; /* 테두리 */
+  padding: 10px 20px; /* 여백 */
+  font-size: 16px; /* 글자 크기 */
+  cursor: pointer; /* 마우스 포인터 */
+  transition: background-color 0.5s ease; /* 배경색 변화 속도 */
+  border-radius: 5px; /* 둥근 모서리 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#calculate-bmi:hover {
+  background-color: #888888; /* 진한 회색 */
+}
+
+.bmiimg {
+  width: 550px;
+  display: flex;
+  justify-content:flex-end ;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* 맞춤운동 조언 */
+.customadvise {
+  width: 1000px;
+  border: 1px solid #000;
+  border-radius: 15px;
+  height: 100px;
+  margin-bottom: 50px;
 }
 
 

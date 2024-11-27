@@ -94,6 +94,56 @@ function closeModal() {
 }
 
 
+
+
+
+// // BMI 계산 버튼
+// const calculateBmiButton = document.getElementById("calculate-bmi");
+
+// // BMI 결과 출력 영역
+// const bmiValueSpan = document.getElementById("bmi-value");
+// const bmiStatusSpan = document.getElementById("bmi-status");
+
+// // BMI 계산 함수
+// function calculateBMI() {
+//     const heightInput = document.getElementById("height").value;
+//     const weightInput = document.getElementById("weight").value;
+
+    
+//     if (!heightInput || !weightInput || heightInput <= 0 || weightInput <= 0) {
+//         alert("신장과 몸무게를 올바르게 입력하세요.");
+//         return;
+//     }
+
+//     const heightInMeters = heightInput / 100; // cm -> m 변환
+//     const bmi = (weightInput / (heightInMeters ** 2)).toFixed(2);
+
+//     let status = "";
+//     if (bmi < 18.5) {
+//         status = "저체중";
+//     } else if (bmi >= 18.5 && bmi < 24.9) {
+//         status = "정상 체중";
+//     } else if (bmi >= 25 && bmi < 29.9) {
+//         status = "과체중";
+//     } else {
+//         status = "비만";
+//     }
+
+//     // 결과 업데이트
+//     bmiValueSpan.textContent = bmi;
+//     bmiStatusSpan.textContent = status;
+// }
+
+// // 이벤트 리스너
+// calculateBmiButton.addEventListener("click", calculateBMI);
+
+
+
+
+
+
+
+
 // BMI 계산 버튼
 const calculateBmiButton = document.getElementById("calculate-bmi");
 
@@ -106,30 +156,69 @@ function calculateBMI() {
     const heightInput = document.getElementById("height").value;
     const weightInput = document.getElementById("weight").value;
 
-    
+    // 입력값 검증
     if (!heightInput || !weightInput || heightInput <= 0 || weightInput <= 0) {
         alert("신장과 몸무게를 올바르게 입력하세요.");
         return;
     }
 
     const heightInMeters = heightInput / 100; // cm -> m 변환
-    const bmi = (weightInput / (heightInMeters ** 2)).toFixed(2);
+    const bmi = (weightInput / (heightInMeters ** 2)).toFixed(2); // BMI 계산 (소수점 2자리)
 
     let status = "";
+    let bmiColor = ""; // 상태에 따른 색상
+
+    // BMI 상태 및 색상 설정
     if (bmi < 18.5) {
         status = "저체중";
-    } else if (bmi >= 18.5 && bmi < 24.9) {
+        bmiColor = "#007BFF"; // 파란색
+    } else if (bmi >= 18.5 && bmi < 23) {
         status = "정상 체중";
-    } else if (bmi >= 25 && bmi < 29.9) {
+        bmiColor = "#32CD32"; // 연두색
+    } else if (bmi >= 23 && bmi < 25) {
         status = "과체중";
+        bmiColor = "#FFA500"; // 주황색
     } else {
         status = "비만";
+        bmiColor = "#FF0000"; // 빨간색
     }
 
     // 결과 업데이트
     bmiValueSpan.textContent = bmi;
     bmiStatusSpan.textContent = status;
+
+    // 색상 및 굵기 변경
+    bmiValueSpan.style.color = bmiColor;
+    bmiValueSpan.style.fontWeight = "bold"; // 폰트 굵게
+    bmiStatusSpan.style.color = bmiColor;
+    bmiStatusSpan.style.fontWeight = "bold"; // 폰트 굵게
 }
 
 // 이벤트 리스너
 calculateBmiButton.addEventListener("click", calculateBMI);
+
+
+
+
+
+
+
+// "맨 위로 가기" 버튼 가져오기
+const scrollToTopButton = document.getElementById("scroll-to-top");
+
+// 스크롤 이벤트 감지
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    scrollToTopButton.classList.add("show");
+  } else {
+    scrollToTopButton.classList.remove("show");
+  }
+});
+
+// 버튼 클릭 이벤트
+scrollToTopButton.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth" // 부드럽게 스크롤
+  });
+});
