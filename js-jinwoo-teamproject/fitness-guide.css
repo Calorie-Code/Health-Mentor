@@ -310,8 +310,12 @@ h3 {
   width: 1000px;
   border: 1px solid #000;
   border-radius: 15px;
-  height: 100px;
+  height: 70px;
   margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.5;
 }
 
 
