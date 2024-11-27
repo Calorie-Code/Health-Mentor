@@ -956,6 +956,12 @@ function toggleFavorite(e) {
 function loadFavoriteStatusHandler(e) {
   favoriteItemsStorage =
     JSON.parse(localStorage.getItem("favoriteItems")) || {};
+
+  // favoriteItemsStorage가 비어 있으면 바로 리턴
+  if (Object.keys(favoriteItemsStorage).length === 0) {
+    return;
+  }
+
   // 2. 모달을 열었을 때 나오는 제목이랑 favoriteItems 이랑 비교해서 일치하는 값이 있으면
   const productId = document.querySelector(".modal-title p").dataset.id;
   if (favoriteItemsStorage.find((item) => item.foodId === productId)) {
