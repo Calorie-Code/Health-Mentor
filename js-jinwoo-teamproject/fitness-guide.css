@@ -123,61 +123,111 @@ h3 {
 
 .main-container .user-info {
   /* border: 4px solid purple; */
-  height: 600px;
+  height: 200px;
   font-size: 18px;
-  
+  color: #3f3f3f;
+  display: flex;
   }
+.user-info label {
+  font-weight: 700;
+  color: #3f3f3f;
+}
+.user-info-1 {
+  border: 4px solid red;
+  width: 650px;
+}
+.user-info-2 {
+  border: 4px solid blue;
+  padding: 10px;
+  width: 350px;
+}
 .user-info .user-info-gender, .user-info-age, .user-info-height, .user-info-weight
 .user-info .label{
   padding: 10px;
 }
+.user-info input {
+  width: 150px;
+  
+}
+
+/* 성별, 나이 - 신장, 몸무게 세트  */
 .main-container .user-info .user-info-genderage {
   display: flex;
   margin-bottom: 10px;
+  border: 1px solid pink;
 }
 .main-container .user-info .user-info-heightweightbmi {
   display: flex;
   margin-bottom: 10px;
+  border: 1px solid purple;
 }
 
 /*========== 성별 입력 ========== */
 .main-container .user-info .user-info-gender {
   border: 4px solid red;
   margin-right: 20px;
+  width: 300px;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
 }
 
 /*========== 나이 입력 ========== */
 .main-container .user-info .user-info-age {
   border: 4px solid blue;
+  width: 300px;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+
 }
 
 /*========== 신장 입력 ========== */
 .main-container .user-info .user-info-height {
   border: 4px solid yellow;
   margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 300px;
+
 }
 
 /*========== 몸무게 입력 ========== */
 .main-container .user-info .user-info-weight {
   border: 4px solid pink;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 300px;
+
 }
 
 /*========== bmi 산출 ========== */
-.main-container .user-info .bmi {
-  margin-bottom: 10px;
+.bmi-result {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #3f3f3f;
+  font-weight: bold;
 }
-.main-container .user-info .user-info-bmi {
-  border: 4px solid brown;
+.bmi-result-1 {
+  border: 1px solid #000;
+  padding-bottom: 10px;
 }
-.user-info input,select {
-  width: 200px;
-  font-size: 15px;
-  height: 30px;
+#bmi-value {
+  font-weight: bold;
+  color: #007BFF;
+}
+#bmi-status {
+  font-weight: bold;
+  color: #FF5722;
+}
+#calculate-bmi {
+  width: 270px;
+  font-size: 20px;
+  height: 40px;
 }
 
-.main-container .user-info .bmiimg {
-  width: 700px;
-}
 
 
 
@@ -202,7 +252,7 @@ h3 {
   /* border: 1px solid red; */
   font-size: 15px;
   color: #3f3f3f;
-  font-weight: 500;
+  font-weight: bold;
   cursor: pointer; /* 마우스 포인터 변경 */
   text-align: center;
   vertical-align: middle;

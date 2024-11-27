@@ -92,3 +92,44 @@ function closeModal() {
     // YouTube 영상 중지
     youtubeFrame.src = "";
 }
+
+
+// BMI 계산 버튼
+const calculateBmiButton = document.getElementById("calculate-bmi");
+
+// BMI 결과 출력 영역
+const bmiValueSpan = document.getElementById("bmi-value");
+const bmiStatusSpan = document.getElementById("bmi-status");
+
+// BMI 계산 함수
+function calculateBMI() {
+    const heightInput = document.getElementById("height").value;
+    const weightInput = document.getElementById("weight").value;
+
+    
+    if (!heightInput || !weightInput || heightInput <= 0 || weightInput <= 0) {
+        alert("신장과 몸무게를 올바르게 입력하세요.");
+        return;
+    }
+
+    const heightInMeters = heightInput / 100; // cm -> m 변환
+    const bmi = (weightInput / (heightInMeters ** 2)).toFixed(2);
+
+    let status = "";
+    if (bmi < 18.5) {
+        status = "저체중";
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        status = "정상 체중";
+    } else if (bmi >= 25 && bmi < 29.9) {
+        status = "과체중";
+    } else {
+        status = "비만";
+    }
+
+    // 결과 업데이트
+    bmiValueSpan.textContent = bmi;
+    bmiStatusSpan.textContent = status;
+}
+
+// 이벤트 리스너
+calculateBmiButton.addEventListener("click", calculateBMI);

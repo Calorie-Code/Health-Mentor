@@ -24,44 +24,48 @@
                 </div>
             </div> -->
             <!-- =========== 첫 번째 페이지: 사용자 정보 입력 =========== -->
+            <h2 class="h2-1">사용자 정보 입력</h2>
+
             <div class="user-info">
             <!-- === 성별 입력 ===  -->
-            <h2 class="h2-1">사용자 정보 입력</h2>
-                <div class="user-info-genderage">
-                    <div class="user-info-gender">
-                        <label for="gender">성별:</label>
-                        <select>
-                            <option value="male">남성</option>
-                            <option value="female">여성</option>
-                            <option value="???">기타</option>
-                        </select>
+                <div class="user-info-1">
+                    <div class="user-info-genderage">
+                        <div class="user-info-gender">
+                            <label for="gender">성별:</label>
+                            <select>
+                                <option value="male">남성</option>
+                                <option value="female">여성</option>
+                                <option value="???">기타</option>
+                            </select>
+                        </div>
+                                <!-- === 나이 입력 ===  -->
+                        <div class="user-info-age">
+                            <label for="age">나이:</label>
+                            <input type="number" placeholder="나이 입력">
+                        </div>
                     </div>
-            <!-- === 나이 입력 ===  -->
-                    <div class="user-info-age">
-                        <label for="age">나이:</label>
-                        <input type="number" placeholder="나이 입력">
+                                <!-- === 신장 입력 ===  -->
+                    <div class="user-info-heightweightbmi">
+                        <div class="user-info-height">
+                            <label for="height">신장:</label>
+                            <input type="number" id="height" placeholder="신장 입력(cm)">
+                        </div>
+                                <!-- === 몸무게 입력 ===  -->
+                        <div class="user-info-weight">
+                            <label for="weight">몸무게:</label>
+                            <input type="number"id="weight" placeholder="몸무게 입력(kg)">
+                        </div>
                     </div>
                 </div>
-            <!-- === 신장 입력 ===  -->
-                <div class="user-info-heightweightbmi">
-                    <div class="user-info-height">
-                        <label for="height">신장:</label>
-                        <input type="number" placeholder="신장 입력(cm)">
+
+                    <div class="user-info-2">
+                        <button id="calculate-bmi">BMI 계산</button>
+                        <div class="bmi-result">
+                            <p class="bmi-result-1">BMI 결과: <span id="bmi-value">정보를 입력해 주세요</span></p>
+                            <p class="bmi-result-2">상태: <span id="bmi-status">정보를 입력해 주세요</span></p>
+                        </div>
                     </div>
-            <!-- === 몸무게 입력 ===  -->
-                    <div class="user-info-weight">
-                        <label for="weight">몸무게:</label>
-                        <input type="number" placeholder="몸무게 입력(kg)">
-                    </div>
-                </div>        
-                    <div class="user-info-summary">
-                        <p>성별: <span id="summary-gender">미입력</span></p>
-                        <p>나이: <span id="summary-age">미입력</span></p>
-                        <p>신장: <span id="summary-height">미입력</span> cm</p>
-                        <p>몸무게: <span id="summary-weight">미입력</span> kg</p>
-                    </div>
-            </div>
-        
+                </div>              
         <!-- <hr> -->
         
 
