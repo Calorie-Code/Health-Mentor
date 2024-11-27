@@ -1,7 +1,15 @@
 @import url(./reset.css);
 
+@font-face {
+  font-family: 'Gong';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: "Noto Sans", sans-serif;
+  /* font-family: "Noto Sans", sans-serif; */
+  font-family: "Gong", sans-serif;
 }
 
 body {
@@ -72,6 +80,7 @@ div#menu-container {
   align-items: center;;
   /* ! Menu-box 안쪽에 하얀 실선 두는 용(바로 아래 코드용) */
   position:relative; 
+  font-family: 'cambria math', sans-serif;
 }
 /* @media (max-width: 1560px) {
   #menu-container .menu-box .menu-icon {
@@ -132,7 +141,7 @@ div#menu-container {
 
 #menu-container .menu-box#meditation .menu-icon,
 #menu-container .menu-box#meditation .menu-description {
-  cursor: url('/img/index/my-plan-cursor.png') 16 16, auto;
+  cursor: url('/img/index/meditation-cursor.png') 16 16, auto;
 } 
 
 
@@ -164,6 +173,10 @@ div#menu-container {
 }
 
 /* 이미지 크기 */
+#menu-container div.image-container img {
+  width: 55px;
+  height: 55px;
+}
 @media (max-width: 1560px) {
   #menu-container div.image-container img {
     width: 40px;
@@ -206,13 +219,12 @@ div#menu-container {
 
 /* 메뉴 별 description 텍스트 */
 #menu-container .menu-box .menu-description p {
-  color: #333333;
-  font-size: 1.2rem;
+  color: #4A4A4A;
+  font-size: 1.4rem;
   font-weight: 600;
   text-align: center;
   line-height: 1.3;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.1);
-  font-family: "Noto Sans KR", sans-serif;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2), -0.5px -0.5px 1px rgba(0, 0, 0, 0.1);
 }
 @media (max-width: 1560px) {
   #menu-container .menu-box .menu-description p {
