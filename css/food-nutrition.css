@@ -1,5 +1,5 @@
 /* 전체 페이지 레이아웃 설정 */
-@import url(./reset.css);
+@import url(../css/reset.css);
 
 body {
   /* font-family: "Noto Sans", sans-serif; */
