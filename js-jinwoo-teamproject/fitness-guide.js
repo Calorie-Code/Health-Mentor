@@ -79,7 +79,14 @@ closeModalButton.addEventListener("click", closeModal);
 
 // Esc 키를 눌렀을 때 모달 닫기 이벤트
 document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" && modalContainer.style.display === "flex") {
+        closeModal();
+    }
+});
+
+// 모달 외부를 클릭하면 닫기
+modalContainer.addEventListener("click", (event) => {
+    if (event.target === modalContainer) {
         closeModal();
     }
 });
@@ -89,9 +96,10 @@ function closeModal() {
     // 모달 창 숨기기
     modalContainer.style.display = "none";
 
-    // YouTube 영상 중지
-    youtubeFrame.src = "";
+    // YouTube 영상 중지 (초기 상태로 재설정)
+    youtubeFrame.src = "about:blank";
 }
+
 
 
 
@@ -120,6 +128,8 @@ scrollToTopButton.addEventListener("click", () => {
     behavior: "smooth" // 부드럽게 스크롤
   });
 });
+
+
 
 
 
@@ -161,45 +171,42 @@ function calculateBMI() {
         status = "비만";
     }
 
-// 결과 업데이트
-bmiValueSpan.textContent = bmi;
-bmiStatusSpan.textContent = status;
+    // 결과 업데이트
+    bmiValueSpan.textContent = bmi;
+    bmiStatusSpan.textContent = status;
 
-// BMI에 따른 색상 및 스타일 적용
-if (bmi < 18.5) {
-    bmiValueSpan.style.color = "blue";
-    bmiStatusSpan.style.color = "blue";
-} else if (bmi >= 18.5 && bmi < 23.0) {
-    bmiValueSpan.style.color = "green";
-    bmiStatusSpan.style.color = "green";
-} else if (bmi >= 23.0 && bmi < 25.0) {
-    bmiValueSpan.style.color = "orange";
-    bmiStatusSpan.style.color = "orange";
-} else {
-    bmiValueSpan.style.color = "red";
-    bmiStatusSpan.style.color = "red";
-}
+    // BMI에 따른 색상 및 스타일 적용
+    if (bmi < 18.5) {
+        bmiValueSpan.style.color = "blue";
+        bmiStatusSpan.style.color = "blue";
+    } else if (bmi >= 18.5 && bmi < 23.0) {
+        bmiValueSpan.style.color = "green";
+        bmiStatusSpan.style.color = "green";
+    } else if (bmi >= 23.0 && bmi < 25.0) {
+        bmiValueSpan.style.color = "orange";
+        bmiStatusSpan.style.color = "orange";
+    } else {
+        bmiValueSpan.style.color = "red";
+        bmiStatusSpan.style.color = "red";
+    }
 
-// 추가된 부분: BMI와 상태를 굵은 글씨로 설정
-bmiValueSpan.style.fontWeight = "bold";
-bmiStatusSpan.style.fontWeight = "bold";
-
-
-
-
-
-
+    // BMI와 상태를 굵은 글씨로 설정
+    bmiValueSpan.style.fontWeight = "bold";
+    bmiStatusSpan.style.fontWeight = "bold";
 
     // 운동 추천 로직
+    const age = parseInt(ageInput, 10); // 나이 입력값을 숫자로 변환
     let recommendation = "";
 
-    if (ageInput >= 10 && ageInput < 20) {
+    if (age >= 10 && age < 20) {
         recommendation = "고강도 유산소 운동(달리기, 줄넘기, 축구) + 근력 운동(웨이트 트레이닝, 맨몸운동: 푸쉬업, 스쿼트)";
-    } else if (ageInput >= 30 && ageInput < 40) {
+    } else if (age >= 20 && age < 30) {
+        recommendation = "유산소 운동(달리기, 빠르게 걷기) + 중강도 근력 운동(플랭크, 스쿼트, 푸쉬업)";
+    } else if (age >= 30 && age < 50) {
         recommendation = "유산소(빠르게 걷기, 등산) + 근력 운동(저중량 고반복 운동, 플랭크)";
-    } else if (ageInput >= 50 && ageInput < 60) {
+    } else if (age >= 50 && age < 70) {
         recommendation = "저강도 유산소(걷기, 수영, 실내자전거) + 관절 강화 운동(요가, 필라테스, 균형 운동)";
-    } else if (ageInput >= 70) {
+    } else if (age >= 70) {
         recommendation = "관절에 부담 없는 운동(워터 에어로빅, 스트레칭, 가벼운 걷기) + 유연성 운동(요가, 태극권)";
     } else {
         recommendation = "적합한 운동을 찾지 못했습니다. 전문가와 상담하세요.";
@@ -232,3 +239,107 @@ calculateBmiButton.addEventListener("click", calculateBMI);
 
 
 
+
+
+
+
+
+
+
+
+// 운동 카테고리별 DOM 요소 가져오기
+const aerobicList = document.querySelector("#aerobic-list ul");
+const bodyweightList = document.querySelector("#bodyweight-list ul");
+const toolList = document.querySelector("#tool-list ul");
+const machineList = document.querySelector("#machine-list ul");
+
+// 운동 카테고리 맵핑
+const exerciseCategories = {
+    aerobic: ["걷기", "등산", "달리기", "수영", "자전거 타기", "줄넘기", "축구", "농구"],
+    bodyweight: ["푸쉬업", "딥스", "턱걸이", "스쿼트", "런지", "윗몸일으키기", "크런치", "AB 롤아웃", "플랭크", "브리지"],
+    tool: ["데드리프트", "도구 스쿼트", "벤치프레스", "풀오버", "플라이", "슈러그", "업라이트 로우", "덤벨 로우", "도구 런지", "래터럴 레이즈", "프레스", "라잉 트라이셉스 익스텐션", "리스트 컬", "덤벨 사이드 벤드", "힙 쓰러스트", "카프 레이즈"],
+    machine: ["체스트프레스", "기구 체스트 플라이", "케이블크로스오버", "시티드케이블로우", "랫 풀 다운", "스트레이트 암 풀 다운", "레그 프레스", "레그 익스텐션", "레그 컬", "바이셉스 컬", "트라이셉스 푸시 다운", "힙 쓰러스트", "카프 레이즈"],
+};
+
+// 운동 선택 시 동작
+document.querySelectorAll(".exercise-card input[type='checkbox']").forEach((checkbox) => {
+    checkbox.addEventListener("change", (event) => {
+        const exerciseName = event.target.nextElementSibling.textContent.trim();
+        const isChecked = event.target.checked;
+
+        // 해당 운동이 어떤 카테고리에 속하는지 확인
+        let categoryList = null;
+        if (exerciseCategories.aerobic.includes(exerciseName)) {
+            categoryList = aerobicList;
+        } else if (exerciseCategories.bodyweight.includes(exerciseName)) {
+            categoryList = bodyweightList;
+        } else if (exerciseCategories.tool.includes(exerciseName)) {
+            categoryList = toolList;
+        } else if (exerciseCategories.machine.includes(exerciseName)) {
+            categoryList = machineList;
+        }
+
+        // 카테고리 리스트에 운동 추가/제거
+        if (categoryList) {
+            if (isChecked) {
+                // 운동 항목 추가
+                const listItem = document.createElement("li");
+                listItem.dataset.exercise = exerciseName;
+
+                // 운동 이름
+                const nameSpan = document.createElement("span");
+                nameSpan.textContent = `${exerciseName} - `;
+                listItem.appendChild(nameSpan);
+
+                // 횟수 입력
+                const repsLabel = document.createElement("label");
+                repsLabel.textContent = "횟수:";
+                const repsInput = document.createElement("input");
+                repsInput.type = "number";
+                repsInput.min = 1;
+                repsInput.placeholder = "횟수";
+                repsLabel.appendChild(repsInput);
+                listItem.appendChild(repsLabel);
+
+                // 세트 입력
+                const setsLabel = document.createElement("label");
+                setsLabel.textContent = " 세트:";
+                const setsInput = document.createElement("input");
+                setsInput.type = "number";
+                setsInput.min = 1;
+                setsInput.placeholder = "세트";
+                setsLabel.appendChild(setsInput);
+                listItem.appendChild(setsLabel);
+
+                // 시간 입력
+                const timeLabel = document.createElement("label");
+                timeLabel.textContent = " 시간(분):";
+                const timeInput = document.createElement("input");
+                timeInput.type = "number";
+                timeInput.min = 1;
+                timeInput.placeholder = "시간";
+                timeLabel.appendChild(timeInput);
+                listItem.appendChild(timeLabel);
+
+                // 삭제 버튼
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "삭제";
+                deleteButton.className = "delete-button";
+                deleteButton.addEventListener("click", () => {
+                    categoryList.removeChild(listItem);
+                    event.target.checked = false; // 체크박스 해제
+                });
+                listItem.appendChild(deleteButton);
+
+                // 항목 추가
+                categoryList.appendChild(listItem);
+            } else {
+                // 운동 항목 제거
+                const listItem = categoryList.querySelector(`[data-exercise="${exerciseName}"]`);
+                if (listItem) {
+                    categoryList.removeChild(listItem);
+                }
+            }
+        }
+    });
+});
