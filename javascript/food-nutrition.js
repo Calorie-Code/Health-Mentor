@@ -771,7 +771,11 @@ async function searchProduct(e) {
     $newDiv.dataset.foodName = foodName;
     $newDiv.dataset.code = code;
     $newDiv.dataset.manufacturer = manufacturer;
-    $newDiv.innerHTML = `<span class="foodName">${foodName} (${manufacturerText ? "업체명: " + manufacturerText : "구분: " + cleanCategory})</span>`;
+    $newDiv.innerHTML = `<span class="foodName">${foodName} (${
+      manufacturerText
+        ? "업체명: " + manufacturerText
+        : "구분: " + cleanCategory
+    })</span>`;
     $resultDiv.append($newDiv);
   });
 
@@ -806,19 +810,11 @@ async function escCloseModal(e) {
   isModalMode = false;
 }
 
-// 검색 결과 나오는 이벤트
+
+// ## 검색 결과 나오는 이벤트 ##
+// 1. 메인 핸들러
 async function showDetail(e) {
-  console.log(e.target);
-
-  if (
-    e.target.classList.contains("product-card") ||
-    e.target.classList.contains("when-no-result") ||
-    e.target.classList.contains("no-favorite-item") ||
-    e.target.classList.contains("result")
-  )
-    return;
-
-  console.log(e.target.lastChildElement);
+  if (shouldIgnoreClickForShowDetail(e)) return;   // 클릭 이벤트 무시 조건
 
   isModalMode = true; // 모달 활성화 모드에서 esc 누르면 모달 꺼지는 이벤트에서 사용하는 용
   isLoading = true; // detailedInfoSectionLoadingToggle 함수에서 로딩 중 여부 확인 용
@@ -872,14 +868,15 @@ async function showDetail(e) {
   } = finalResult;
 
   //  괄호 뒤 삭제
-  const cleanCategory = category? category.replace(/\(.*?\)/, "").trim()
-: "";
+  const cleanCategory = category ? category.replace(/\(.*?\)/, "").trim() : "";
 
   // 6. 내용 모달에 집어넣기
   isLoading = false;
   detailedInfoSectionLoadingToggle(); // 로딩 멘트 및  로딩 아이콘 활성화
   console.log($title);
-  $title.textContent = `${foodName} (${manufacturer? "업체명: "+manufacturer : "구분: "+cleanCategory})`;
+  $title.textContent = `${foodName} (${
+    manufacturer ? "업체명: " + manufacturer : "구분: " + cleanCategory
+  })`;
   $title.dataset.foodName = foodName; // 즐겨찾기 불러올 때 쓰는 용
   $title.dataset.id = code; // 즐겨찾기 불러올 때 쓰는 용
   $title.dataset.manufacturer = manufacturer; // 즐겨찾기 불러올 때 쓰는 용
@@ -890,6 +887,17 @@ async function showDetail(e) {
   // 차트 업데이트
   createChart(finalResult);
 }
+
+// 2. (서브) 클릭이벤트 무시할 조건
+function shouldIgnoreClickForShowDetail(e) {
+  return (
+    e.target.classList.contains("product-card") ||
+    e.target.classList.contains("when-no-result") ||
+    e.target.classList.contains("no-favorite-item") ||
+    e.target.classList.contains("result")
+  );
+}
+
 
 // 모달 가로 스크롤 스크롤 효과
 function modalBodyHorizontalScrollHandler(e) {
@@ -903,23 +911,22 @@ function modalBodyHorizontalScrollHandler(e) {
   e.preventDefault();
 }
 
-// favorite 버튼
+// ## favorite 버튼 활성화 ## //
+// 1. 메인 이벤트 핸들러
 function toggleFavorite(e) {
+  // 지역변수 설정
+  const $modalTitleP = document.querySelector(".modal-title p");
+  let isToBeUnfavorite;  // toggleIconAndTextForFavorite() 용
+  const { foodName, id, manufacturer, category } = $modalTitleP.dataset; // favoriteItemDetail 설정 위한 변수
+
   // 즐겨찾기 활성화 된 상태에서 누르면
   if (e.target.classList.contains("add-to-favorite")) {
-    // 아이콘 변경
-    $favoriteIcon.style.display = "none";
-    $unfavoriteIcon.style.display = "block";
-    // 일정 시간 동안 즐겨찾기 안내 span 보이기
-    $favoriteSpan.style.display = "none"; // 등록&해제 연속으로 누를 시 멘트 안 보이게
-    $unfavoriteSpan.style.display = "inline";
-    setTimeout(function () {
-      $unfavoriteSpan.style.display = "none";
-    }, 1000);
+    // 아이콘 및 텍스트 스타일 변경
+    isToBeUnfavorite = true;
+    toggleIconAndTextForFavorite(isToBeUnfavorite);
     // local storage에서 지우기!!
     let index = favoriteItems.findIndex(
-      (item) =>
-        item.foodId === document.querySelector(".modal-title p").dataset.id
+      (item) => item.foodId === $modalTitleP.dataset.id
     );
     if (index !== -1) {
       favoriteItems.splice(index, 1);
@@ -928,26 +935,43 @@ function toggleFavorite(e) {
 
     // 비활성화된 상태에서 누르면
   } else if (e.target.classList.contains("unfavorite")) {
-    $unfavoriteSpan.style.display = "none"; // 등록&해제 연속으로 누를 시 멘트 안 보이게
-    $favoriteIcon.style.display = "block";
-    $unfavoriteIcon.style.display = "none";
-    // 일정 시간 동안 즐겨찾기 안내 span 보이기
-    $favoriteSpan.style.display = "inline";
-    setTimeout(function () {
-      $favoriteSpan.style.display = "none";
-    }, 700);
+    // 아이콘 및 텍스트 스타일 변경
+    isToBeUnfavorite = false;
+    toggleIconAndTextForFavorite(isToBeUnfavorite);
     // local storage에 제품명 상태 저장하기!!
     //      1. 필요한 값을 담은 객체 만들기
+
     const favoriteItemDetail = {
-      foodName: document.querySelector(".modal-title p").dataset.foodName,
-      foodId: document.querySelector(".modal-title p").dataset.id,
-      foodManufacturer:
-        document.querySelector(".modal-title p").dataset.manufacturer || "- ",
-      foodCategory: document.querySelector(".modal-title p").dataset.category,
+      foodName,
+      foodId: id,
+      foodManufacturer: manufacturer || "- ",
+      foodCategory: category,
     };
     favoriteItems.push(favoriteItemDetail);
     localStorage.setItem("favoriteItems", JSON.stringify(favoriteItems));
     console.log(favoriteItems);
+  }
+}
+// 2. 서브 이벤트 핸들러(아이콘 및 텍스트 변경)
+function toggleIconAndTextForFavorite(isToBeUnfavorite) {
+  if (isToBeUnfavorite) {
+    // 아이콘 변경
+    $favoriteIcon.style.display = "none";
+    $unfavoriteIcon.style.display = "block";
+    // 일정 시간 동안 즐겨찾기 안내 span 보이기
+    $favoriteSpan.style.display = "none"; // 등록&해제 연속으로 누를 시 멘트 안 보이게
+    $unfavoriteSpan.style.display = "inline";
+    setTimeout(function () {
+      $unfavoriteSpan.style.display = "none";
+    }, 700);
+  } else {
+    $unfavoriteSpan.style.display = "none"; // 등록&해제 연속으로 누를 시 멘트 안 보이게
+    $favoriteIcon.style.display = "block";
+    $unfavoriteIcon.style.display = "none";
+    $favoriteSpan.style.display = "inline";
+    setTimeout(function () {
+      $favoriteSpan.style.display = "none";
+    }, 700);
   }
 }
 
@@ -972,16 +996,15 @@ function loadFavoriteStatusHandler(e) {
   }
 }
 
-// 즐겨찾기 목록 불러오기 이벤트
+// ## 즐겨찾기 목록 불러오기 이벤트 ##
+// 1. 메인 이벤트 핸들러 
 function displayFavoritesHandler(e) {
   // !! 즐겨찾기 목록 불러오고 있을 때는 사용자가 새로운 값 입력할때까지 search 기능 안 되게(충돌 방지)
   clearTimeout(timeoutId);
 
   // storage에 저장된 즐겨찾기 목록 오기
   // !!! 최신 상태로 업데이트해서 가져올 것!!
-  favoriteItemsStorage =
-    JSON.parse(localStorage.getItem("favoriteItems")) || {};
-  console.log('gg');
+  favoriteItemsStorage = JSON.parse(localStorage.getItem("favoriteItems")) || [];
   console.log(favoriteItemsStorage);
   // 검색 결과 없을 때 효과는 작동 안하게 하고
   $noResult.style.display = "none";
@@ -994,7 +1017,7 @@ function displayFavoritesHandler(e) {
   $mainContainerTextBox.classList.add("search-mode"); // !!! 서치 모드 처럼 텍스트 바 높이 늘려주기
 
   // 즐겨찾기한 제품이 없으면,
-  if (favoriteItemsStorage.length === 0) {
+  if (!favoriteItemsStorage.length) {
     //  즐겨찾기 없다고 문구 표시
     const $noFavoriteDiv = document.createElement("div");
     $resultDiv.style.display = "block"; // 즐겨찾기 목록을 보여주기 위해 display 설정(기본 세팅이 none임)
@@ -1008,20 +1031,30 @@ function displayFavoritesHandler(e) {
   }
 
   // storage에 저장된 즐겨찾기 목록 가져와서, 화면에 표시
-  console.log('ggg');
+  console.log("favoriteItemsStorage");
   console.log(favoriteItemsStorage);
   favoriteItemsStorage.forEach((item) => {
-    $newDiv = document.createElement("div");
-    $newDiv.classList.add("product-card");
-    $newDiv.dataset.foodName = item.foodName;
-    $newDiv.dataset.code = item.foodId;
-    $newDiv.dataset.manufacturer = item.foodManufacturer;
-    $newDiv.dataset.category = item.foodCategory;
-    console.log($newDiv);
-    console.log(item.foodCategory);
-    $newDiv.innerHTML = `<span class="foodName">${item.foodName} (${item.foodManufacturer && item.foodManufacturer == null ? "업체명: " + item.foodManufacturer : "구분: " + item.foodCategory})</span>`;
-    $resultDiv.append($newDiv);
+    const $newProductCardDiv = createProductCard(item);
+    $resultDiv.append($newProductCardDiv);
   });
+}
+
+// 2. 서브 핸들러 - product card 의 html 생성
+function createProductCard(item) {
+  const $newDiv = document.createElement("div");
+  $newDiv.classList.add("product-card");
+  $newDiv.dataset.foodName = item.foodName;
+  $newDiv.dataset.code = item.foodId;
+  $newDiv.dataset.manufacturer = item.foodManufacturer;
+  $newDiv.dataset.category = item.foodCategory;
+  console.log('foodManufacturer 체크');
+  console.log(item.foodManufacturer);
+
+  $newDiv.innerHTML = `<span class="foodName">${item.foodName} (${
+    item.foodManufacturer == null ? "업체명: " + item.foodManufacturer : "구분: " + item.foodCategory
+  })</span>`;
+  
+  return $newDiv;
 }
 
 // =================== 푸드 랜덤 선택 게임 ===============
