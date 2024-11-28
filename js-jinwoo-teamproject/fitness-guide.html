@@ -44,19 +44,19 @@
                                 <!-- === 나이 입력 ===  -->
                                 <div class="user-info-age">
                                     <label for="age">나이:</label>
-                                    <input type="number" id="age" placeholder="나이 입력">
+                                    <input type="number" id="age" placeholder="나이 입력" min="1" required>
                                 </div>
                     </div>
                                 <!-- === 신장 입력 ===  -->
                     <div class="user-info-heightweightbmi">
                         <div class="user-info-height">
                             <label for="height">신장:</label>
-                            <input type="number" id="height" placeholder="신장 입력(cm)">
+                            <input type="number" id="height" placeholder="신장 입력(cm)" min="1" required>
                         </div>
                                 <!-- === 몸무게 입력 ===  -->
                         <div class="user-info-weight">
                             <label for="weight">몸무게:</label>
-                            <input type="number"id="weight" placeholder="몸무게 입력(kg)">
+                            <input type="number" id="weight" placeholder="몸무게 입력(kg)" min="1" required>
                         </div>
                     </div> 
                 </div>
@@ -578,36 +578,26 @@
         <!-- <hr> -->
                 <!-- =========== 다른 운동 카드 추가 =========== -->
                 <h2 class="h2-3">운동 계획 설정</h2>
-
-                <div class="exercise-schedule">
-                    <div class="exercise-schedule-">
-                        <label>운동 이름: </label>
-                        <input type="text">
+                <div class="exercise-plan">
+                    <h3 class="exercise-plan-title">선택된 운동</h3>
+                    <div class="exercise-plan-category" id="aerobic-list">
+                        <h4 class="exercise-plan-h4-1">유산소 운동</h4>
+                        <ul id="exercise-list"></ul>
                     </div>
-        
-                    <div class="exercise-schedule-">
-                        <label>횟수: </label>
-                        <input type="number">
+                    <div class="exercise-plan-category" id="bodyweight-list">
+                        <h4 class="exercise-plan-h4-2">맨몸 운동</h4>
+                        <ul id="exercise-list"></ul>
                     </div>
-        
-                    <div class="exercise-schedule-">
-                        <label>세트: </label>
-                        <input type="number">
+                    <div class="exercise-plan-category" id="tool-list">
+                        <h4 class="exercise-plan-h4-3">도구 운동</h4>
+                        <ul id="exercise-list"></ul>
                     </div>
-        
-                    <div class="exercise-schedule-">
-                        <label>시간 (분): </label>
-                        <input type="number">
+                    <div class="exercise-plan-category" id="machine-list">
+                        <h4 class="exercise-plan-h4-4">기구 운동</h4>
+                        <ul id="exercise-list"></ul>
                     </div>
-        
-                    <div class="exercise-schedule-">
-                        <label>운동 기간 (주): </label>
-                        <input type="number">
-                    </div>
-        
-                    <div class="exercise-schedule-"><button>계획 저장</button></div>
                 </div>
-        
+                
         </div>
         
         <!-- <hr> -->
