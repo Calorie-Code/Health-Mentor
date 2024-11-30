@@ -25,14 +25,16 @@
 
 ## 4. ⚙️ Tech Stack with Tools
 ![HTML5 Badge](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![CSS3 Badge](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white) ![ECMAScript 2020 Badge](https://img.shields.io/badge/ECMAScript%202020-000000?logo=javascript&logoColor=white&labelColor=000000)
+<br>
 ![Visual Studio Code 1.95 Badge](https://img.shields.io/badge/Visual%20Studio%20Code_1.95.0-007ACC?logo=visual-studio-code&logoColor=white) ![Windows 11 Badge](https://img.shields.io/badge/Windows%2011-0078D6?logo=windows&logoColor=white) ![Chrome 129 Badge](https://img.shields.io/badge/Chrome%20129-4285F4?logo=googlechrome&logoColor=white)
+<br>
 ![Git 2.47 Badge](https://img.shields.io/badge/Git%202.47-F05032?logo=git&logoColor=white) ![GitHub Badge](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white) ![Discord Badge](https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white)
 
 
 
 ## 5. 📸 시연
 ####  1) 🏠 메인 페이지
-(디자인 : 김진우, HTML 및 CSS : 김미정)
+(디자인 : 김진우, HTML 및 CSS : 김미정)<br>
 ![](https://velog.velcdn.com/images/kimmy25312/post/e63d1c3d-c2bc-414b-afa0-1e9d38269dc1/image.gif)
 <br>
 #### 2) 🏋️‍ 운동 가이드
@@ -40,12 +42,14 @@
 ![](https://velog.velcdn.com/images/kimmy25312/post/5996b445-47ba-4f68-8c31-383c45501513/image.png)
 ![](https://velog.velcdn.com/images/kimmy25312/post/2d51e51e-5865-4669-853f-4aaf462aabbb/image.gif)
 <br>
+<br>
+<br>
 
 #### 3) 🥗 식품영양정보
 (개발 : 김미정)
 ![](https://velog.velcdn.com/images/kimmy25312/post/e29736df-8f92-4887-a7e6-623a3225de47/image.png)
 ![](https://velog.velcdn.com/images/kimmy25312/post/2e8d8cd0-adf6-4b08-b882-dfab54931e3d/image.gif)
-<br>
+<br><br>
 #### 4) 🧘 명상
 (개발 : 김미정 / 아이디어 제공 : 김진우)
 ![](https://velog.velcdn.com/images/kimmy25312/post/5730c59c-6362-4bdf-8299-6fc0bd8e9ca6/image.png)
